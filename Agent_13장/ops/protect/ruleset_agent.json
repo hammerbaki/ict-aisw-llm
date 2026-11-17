@@ -1,0 +1,15 @@
+{
+  "name": "에이전트·루프 브랜치 보호",
+  "target": "branch",
+  "enforcement": "active",
+  "bypass_actors": [],
+  "conditions": {
+    "ref_name": {
+      "include": ["refs/heads/agent/*", "refs/heads/loop/*"],
+      "exclude": []
+    }
+  },
+  "rules": [
+    { "type": "non_fast_forward" }
+  ]
+}

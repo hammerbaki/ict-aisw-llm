@@ -1,0 +1,13 @@
+diff --git a/api/ask.py b/api/ask.py
+--- a/api/ask.py
++++ b/api/ask.py
+@@ -12,7 +12,8 @@ TOP_K = 3
+
+ # 1위 청크의 유사도가 이 값보다 낮으면 LLM을 부르지 않고 NOT_FOUND로 답한다.
+ # 임베딩 방식마다 유사도의 눈금이 달라 기준값을 따로 둔다. 환경 변수 ASK_MIN_SCORE로 바꿀 수 있다.
+-MIN_SCORE = {"ollama": 0.5, "fallback": 0.3}
++# 범위 밖 질문에 엉뚱한 근거로 답하는 일을 줄이려고 대체 임베딩의 기준값을 올렸다.
++MIN_SCORE = {"ollama": 0.5, "fallback": 0.35}
+
+
+ def min_score(backend):

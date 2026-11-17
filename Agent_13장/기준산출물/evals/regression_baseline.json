@@ -1,0 +1,28 @@
+{
+  "passed_ids": [
+    "ask-01",
+    "ask-02",
+    "ask-03",
+    "ask-04",
+    "ask-05",
+    "ask-06",
+    "ask-07",
+    "ask-08",
+    "ask-09",
+    "ask-10",
+    "out-01",
+    "out-02",
+    "out-03",
+    "out-04",
+    "sum-01",
+    "sum-02",
+    "sum-03",
+    "sum-04"
+  ],
+  "pass_rate": 1.0,
+  "commit": null,
+  "prompts": {
+    "summary": "summary_v1",
+    "ask": "ask_v1"
+  }
+}

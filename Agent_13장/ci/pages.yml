@@ -1,0 +1,86 @@
+# jobprep 웹 배포 워크플로 (「AI에이전트 기획 및 개발」 13장 키트)
+# 저장소의 .github/workflows/pages.yml 로 복사해 쓴다.
+#
+# 사람이 판 태그를 골라 손으로 시작한다(자동 배포를 하지 않는다):
+#   gh workflow run pages.yml -f tag=v1.0.0
+# 되돌리기도 같은 명령에 직전 판의 태그를 준다:
+#   gh workflow run pages.yml -f tag=v1.0.0
+#
+# 1) 태그의 형식을 보고, 그 커밋에서 CI의 네 검사(test, eval, secrets, rules)가 성공했는지 GitHub에 묻는다.
+# 2) 태그의 web/ 폴더만 꺼내 version.txt(판과 커밋)를 더하고 GitHub Pages에 배포한다.
+# 워크플로는 기본 브랜치(main)에서 돌고 태그의 파일을 꺼내므로, github-pages 환경의 배포 규칙(기본 브랜치만)을 바꾸지 않아도 된다.
+# API는 Pages에 올라가지 않는다. API는 GitHub 릴리스(release.yml)까지 하고, 웹이 부르는 API는 내 PC에서 띄운다.
+# 저장소의 Settings → Pages에서 Source를 GitHub Actions로 바꾸어 두어야 한다.
+
+name: Pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "배포할 판 태그(예: v1.0.0)"
+        required: true
+        type: string
+
+permissions:
+  contents: read            # 기본은 읽기만. 배포 권한은 deploy 작업에만 준다
+
+concurrency:
+  group: pages              # 배포가 겹치지 않게 한다. 돌고 있는 배포는 취소하지 않는다
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      checks: read          # 태그 커밋의 검사 결과를 읽는다
+    steps:
+      - name: 기본 브랜치의 스크립트 받기
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: CI를 통과한 판인지 확인
+        env:
+          TAG: ${{ inputs.tag }}               # 입력은 환경 변수로만 읽는다(스크립트 주입 방지)
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: bash ops/release/ci_passed.sh "$TAG"
+
+      - name: 태그의 파일 받기
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.tag }}
+          persist-credentials: false
+
+      - name: 판 표시 파일 만들기
+        env:
+          TAG: ${{ inputs.tag }}
+        run: printf '%s %s\n' "$TAG" "$(git rev-parse --short HEAD)" > web/version.txt
+
+      - name: Pages 설정 읽기
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+
+      - name: 웹 폴더 올리기
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: web
+
+  deploy:
+    name: deploy
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      pages: write          # Pages에 배포한다
+      id-token: write       # deploy-pages가 배포 요청을 증명하는 데 쓴다
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: GitHub Pages에 배포
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

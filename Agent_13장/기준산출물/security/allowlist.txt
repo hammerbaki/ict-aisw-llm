@@ -1,0 +1,8 @@
+# 비밀 정보 검사(security/scan_secrets.py, 본체는 11장의 security/tools/scan_secrets.py)의 예외 목록
+# 한 줄에 「경로」 또는 「경로:종류」를 적는다. 경로에는 * 를 쓸 수 있다.
+# 종류는 11장 security/tools/secret_patterns.py의 이름이다:
+#   anthropic_api_key, github_token, aws_access_key_id, private_key, lab_key, generic_assignment
+# 일부러 넣은 가짜 값만 적는다. 줄마다 까닭을 위 줄에 주석으로 남긴다. 실제 키는 예외에 넣지 않고 폐기한다(11장 8-4절).
+# 예)
+# 11장 간접 프롬프트 주입 재현용 가짜 키(실제 키가 아니다)
+# security/재현/fake.txt:lab_key
