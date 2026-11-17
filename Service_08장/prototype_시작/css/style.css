@@ -1,0 +1,61 @@
+/* jobprep 프로토타입 공통 스타일. 색·글꼴·간격은 tokens.css의 의미 토큰만 쓴다.
+   모바일 우선: 기본 규칙은 좁은 화면용이고, 넓은 화면의 규칙은 아래 @media에 더한다. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+img { max-width: 100%; height: auto; }
+
+h1, h2, h3 { line-height: var(--line-height-title); margin: 0 0 var(--space-2); }
+h1 { font-size: var(--font-size-page); }
+h2 { font-size: var(--font-size-title); }
+p { margin: 0 0 var(--space-3); }
+
+a { color: var(--color-primary); }
+
+/* 초점 표시: 키보드로 옮겨 온 초점에 3px 테두리. outline을 없애기만 하지 않는다(WCAG 2.4.7) */
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* 본문 바로가기: 평소에는 화면 밖, 초점을 받으면 나타난다 */
+.skip-link {
+  position: absolute; left: var(--space-3); top: -4rem;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-primary); color: var(--color-on-primary);
+  border-radius: var(--radius-control); z-index: 10;
+}
+.skip-link:focus { top: var(--space-2); }
+
+/* 화면 머리와 전역 내비게이션 */
+.site-header { border-bottom: 1px solid var(--color-divider); }
+.site-header__inner, main {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-3);
+}
+.site-header__inner { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); padding-block: var(--space-2); }
+.site-name { font-weight: var(--font-weight-bold); color: var(--color-text); text-decoration: none; }
+.nav-list { display: flex; flex-wrap: wrap; gap: var(--space-1); list-style: none; margin: 0; padding: 0; }
+.nav-list a {
+  display: inline-flex; align-items: center; min-height: var(--size-target-min);
+  padding: 0 var(--space-3); border-radius: var(--radius-control);
+  color: var(--color-text); text-decoration: none;
+}
+.nav-list a[aria-current="page"] { background: var(--color-primary-soft); color: var(--color-primary); font-weight: var(--font-weight-bold); }
+.nav-list a[aria-disabled="true"] { color: var(--color-text-muted); }
+
+main { padding-block: var(--space-5) var(--space-6); }
+.page-intro { color: var(--color-text-muted); }
+
+/* 여기부터 화면 명세에 따라 컴포넌트(버튼, 입력, 카드, 상태 표시)의 스타일을 더한다.
+   색·글꼴·간격은 tokens.css의 의미 토큰(var(--color-…), var(--space-…))만 쓴다. 16진 색을 직접 쓰지 않는다. */

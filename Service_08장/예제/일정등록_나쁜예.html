@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>일정 등록</title>
+  <style>
+    body { font-family: sans-serif; color: #9ca3af; }
+    input { border: 1px solid #e5e7eb; outline: none; }
+    .btn { background: #3b82f6; color: #fff; padding: 4px 8px; }
+  </style>
+</head>
+<body>
+  <!-- 이 파일은 일부러 접근성 문제를 넣은 예제다. html_check.py가 찾는 것과 못 찾는 것을 비교한다 -->
+  <div class="top">
+    <img src="logo.png">
+    <span onclick="location.href='index.html'">공고</span>
+  </div>
+  <h3>일정 등록</h3>
+  <form>
+    <input name="company" placeholder="회사명">
+    <input name="title" placeholder="공고 제목">
+    <input name="deadline" type="date">
+    <select name="stage"><option>관심</option><option>서류 준비</option></select>
+    <button class="btn"><img src="save.svg"></button>
+    <a href="schedule.html"><img src="close.svg" alt=""></a>
+    <input type="text" name="memo" tabindex="3" aria-label="메모">
+  </form>
+  <p id="msg" style="color:red">빨간 칸을 고쳐 주세요</p>
+  <p id="msg">저장 실패</p>
+</body>
+</html>
