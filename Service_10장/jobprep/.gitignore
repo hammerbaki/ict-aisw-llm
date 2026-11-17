@@ -1,0 +1,8 @@
+# 비밀 정보
+.env
+# 파이썬 실행 부산물
+.venv/
+__pycache__/
+.pytest_cache/
+# 이전 측정 결과(최신 결과는 커밋한다)
+results/_이전/
