@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>잡프렙 (13장 평가용 견본)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>잡프렙</h1>
+    <p class="note">13장 평가 실습용 견본이다. 앞 장의 프로덕트가 없는 학습자가 평가 대상으로 쓴다.</p>
+    <nav>
+      <button class="tab active" data-tab="jobs">JD 리스트</button>
+      <button class="tab" data-tab="tracker">Apply Tracker</button>
+      <button class="tab" data-tab="ask">자료 묻기</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- SCR-01 공고 목록 -->
+    <section id="jobs" class="panel">
+      <div class="toolbar">
+        <input id="q" type="text" placeholder="키워드">
+        <button id="search">검색</button>
+        <select id="region">
+          <option value="ALL">ALL</option>
+          <option>서울</option>
+          <option>경기</option>
+          <option>대전</option>
+        </select>
+        <button id="apply-filter">적용</button>
+      </div>
+      <ul id="job-list"></ul>
+      <div id="summary-box" class="box" hidden>
+        <h2>JD 파싱 결과</h2>
+        <div id="summary-out"></div>
+      </div>
+    </section>
+
+    <!-- SCR-03 지원 일정 -->
+    <section id="tracker" class="panel" hidden>
+      <form id="add-form">
+        <input id="t-company" type="text" placeholder="회사">
+        <input id="t-due" type="text" placeholder="마감일">
+        <input id="t-memo" type="text" placeholder="메모">
+        <button type="submit">등록</button>
+      </form>
+      <ul id="tracker-list"></ul>
+    </section>
+
+    <!-- SCR-06 자료 묻기 (취업 자료 질의응답) -->
+    <section id="ask" class="panel" hidden>
+      <h2>무엇이든 물어보세요. AI가 정확히 답해 드립니다.</h2>
+      <form id="ask-form">
+        <input id="question" type="text" placeholder="질문">
+        <button type="submit">보내기</button>
+      </form>
+      <div id="answer" class="box"></div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
