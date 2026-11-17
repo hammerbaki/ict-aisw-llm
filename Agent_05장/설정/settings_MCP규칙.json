@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__jobprep-ops__error_summary",
+      "mcp__jobprep-ops__status_counts",
+      "mcp__jobprep-ops__slow_requests"
+    ],
+    "ask": [
+      "mcp__jobprep-ops__read_log"
+    ],
+    "deny": [
+      "Edit(/logs/**)"
+    ]
+  }
+}
