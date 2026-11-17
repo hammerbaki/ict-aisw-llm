@@ -1,0 +1,15 @@
+{
+  "name": "jobprep-team",
+  "description": "jobprep 운영팀이 함께 쓰는 Claude Code 플러그인 모음",
+  "owner": {
+    "name": "jobprep 운영팀"
+  },
+  "plugins": [
+    {
+      "name": "jobprep-ops",
+      "source": "./plugins/jobprep-ops",
+      "description": "운영 기록으로 장애 보고서를 쓰고 서식을 검사한다",
+      "category": "operations"
+    }
+  ]
+}
