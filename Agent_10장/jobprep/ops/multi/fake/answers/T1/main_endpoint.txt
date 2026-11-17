@@ -1,0 +1,17 @@
+
+
+@app.get("/api/favorites/export")
+def export_favorites(ids: str | None = None):
+    """관심 공고를 CSV 파일로 내보낸다. ids는 쉼표로 구분한 공고 번호이다 (REQ-FAV-03, REQ-FAV-04)."""
+    try:
+        id_list = export.parse_ids(ids)
+    except ValueError as error:
+        raise HTTPException(status_code=422, detail=str(error)) from error
+    missing = export.missing_ids(id_list)
+    if missing:
+        raise HTTPException(status_code=404, detail=f"없는 공고: {', '.join(map(str, missing))}")
+    return Response(
+        content=export.export_csv(id_list),
+        media_type="text/csv; charset=utf-8",
+        headers={"Content-Disposition": 'attachment; filename="favorites.csv"'},
+    )
