@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 수업 질문
+    url: https://docs.github.com/en/issues
+    about: 저장소 작업이 아닌 질문은 수업 시간에 하거나 교수에게 직접 묻는다. 이 링크는 GitHub 이슈 문서다.
