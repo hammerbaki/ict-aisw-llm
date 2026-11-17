@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>공고 상세 - jobprep</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="job-detail">
+  <a class="skip-link" href="#main">본문 바로가기</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-name" href="index.html">jobprep 취업 준비</a>
+      <nav aria-label="주 메뉴">
+        <ul class="nav-list">
+          <li><a href="index.html">공고</a></li>
+          <li><a href="schedule.html">지원 관리</a></li>
+          <li><a aria-disabled="true" title="10장에서 연다">자기소개서</a></li>
+          <li><a aria-disabled="true" title="11장에서 연다">자료 묻기</a></li>
+        </ul>
+      </nav>
+      <p class="utility"><a aria-disabled="true" title="이후 장에서 연다">설정</a></p>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <!-- SCR-02 공고 상세: REQ-008, REQ-010, REQ-013~016, REQ-024, REQ-025, REQ-030, REQ-037, REQ-038 -->
+    <p><a class="back-link" href="index.html">공고 목록으로</a></p>
+    <div id="job-detail">
+    <h1 id="job-title">공고 제목</h1>
+    <div class="detail-grid">
+      <section aria-labelledby="facts-heading">
+        <h2 id="facts-heading">공고 정보</h2>
+        <dl class="facts">
+          <dt>모집기관</dt><dd id="job-company"></dd>
+          <dt>상태</dt><dd id="job-status"></dd>
+          <dt>근무 지역</dt><dd id="job-region"></dd>
+          <dt>직무 분야</dt><dd id="job-role"></dd>
+          <dt>접수 마감일</dt><dd id="job-deadline"></dd>
+        </dl>
+        <h3>자격 요건</h3>
+        <ul id="job-requirements"></ul>
+        <p class="card__actions">
+          <a id="add-schedule" class="btn btn--primary" href="schedule-new.html">지원 일정에 추가</a>
+          <button id="save-toggle" type="button" class="btn btn--secondary" aria-pressed="false">관심 공고 저장</button>
+          <a class="btn btn--secondary" href="#original-heading">원문 보기</a>
+        </p>
+        <p id="save-message" role="status" aria-live="polite" class="ai-note"></p>
+        <h2 id="original-heading">공고 원문</h2>
+        <div id="original-text" class="original"></div>
+      </section>
+      <section class="summary" aria-labelledby="summary-heading">
+        <h2 id="summary-heading">공고 요약</h2>
+        <p>자격 요건, 근무 조건, 제출 서류, 접수 마감일의 네 항목으로 나누고, 항목마다 근거가 된 원문 문장을 달아요.</p>
+        <button id="summary-btn" type="button" class="btn btn--primary"><span class="label">요약 만들기</span></button>
+        <p id="summary-status" role="status" aria-live="polite" class="ai-note"></p>
+        <div id="summary-output"></div>
+      </section>
+    </div>
+    </div>
+    <section id="not-found" class="notice notice--empty" hidden>
+      <h1>찾을 수 없는 공고예요</h1>
+      <p>주소의 공고 번호를 확인하거나 공고 목록에서 다시 골라 주세요.</p>
+      <p><a href="index.html">공고 목록으로 가기</a></p>
+    </section>
+  </main>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
