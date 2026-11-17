@@ -1,0 +1,29 @@
+{
+  "설명": "시도 1에서 정렬만 고쳐 실패가 2개에서 1개로 줄고(체크포인트), 시도 2에서 남은 날 수를 고쳐 통과한다.",
+  "attempts": [
+    {
+      "edits": [
+        {
+          "file": "api/jobs.py",
+          "old": "    result.sort(key=lambda item: item[\"deadline\"], reverse=True)",
+          "new": "    result.sort(key=lambda item: item[\"deadline\"])"
+        }
+      ],
+      "cost_usd": 0.18,
+      "turns": 6,
+      "result": "list_jobs()의 정렬이 내림차순이어서 오름차순으로 고쳤다. test_days_left_uses_today는 아직 실패한다.\nFAIL"
+    },
+    {
+      "edits": [
+        {
+          "file": "api/jobs.py",
+          "old": "    return (today() - deadline).days",
+          "new": "    return (deadline - today()).days"
+        }
+      ],
+      "cost_usd": 0.14,
+      "turns": 5,
+      "result": "days_left()의 뺄셈 순서가 뒤바뀌어 있어 마감일에서 오늘을 빼도록 고쳤다. python -m pytest -q 결과 43 passed.\nOK"
+    }
+  ]
+}

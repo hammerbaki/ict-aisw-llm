@@ -1,0 +1,12 @@
+{
+  "name": "jobprep-harness",
+  "displayName": "jobprep 하네스",
+  "version": "1.0.0",
+  "description": "jobprep 계열 저장소의 하네스: 보호 파일 훅, 편집 뒤 관련 테스트, 완료 전 테스트 관문, 검토 서브에이전트",
+  "author": {
+    "name": "jobprep 운영팀"
+  },
+  "license": "MIT",
+  "keywords": ["harness", "hooks", "review", "jobprep"],
+  "dependencies": ["jobprep-ops"]
+}

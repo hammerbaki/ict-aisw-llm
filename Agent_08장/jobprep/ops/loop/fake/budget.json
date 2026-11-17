@@ -1,0 +1,41 @@
+{
+  "설명": "시도 1이 비용을 많이 쓰고, 시도 2는 시도 한 번의 상한(--max-budget-usd)에 닿는다. 남은 예산으로 시도 3을 시작할 수 없어 멈춘다.",
+  "attempts": [
+    {
+      "edits": [],
+      "cost_usd": 0.45,
+      "turns": 14,
+      "result": "저장소 전체를 읽었으나 원인을 정하지 못하였다.\nFAIL"
+    },
+    {
+      "edits": [
+        {
+          "file": "api/jobs.py",
+          "old": "    result.sort(key=lambda item: item[\"deadline\"], reverse=True)",
+          "new": "    result.sort(key=lambda item: item[\"deadline\"])"
+        }
+      ],
+      "cost_usd": 0.7,
+      "turns": 15,
+      "overshoot_usd": 0.03,
+      "result": "(상한에 닿아 끝나지 않음)"
+    },
+    {
+      "edits": [
+        {
+          "file": "api/jobs.py",
+          "old": "    result.sort(key=lambda item: item[\"deadline\"], reverse=True)",
+          "new": "    result.sort(key=lambda item: item[\"deadline\"])"
+        },
+        {
+          "file": "api/jobs.py",
+          "old": "    return (today() - deadline).days",
+          "new": "    return (deadline - today()).days"
+        }
+      ],
+      "cost_usd": 0.2,
+      "turns": 6,
+      "result": "두 곳을 고쳤다.\nOK"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "설명": "세 번 모두 고치지 못한다: 아무것도 바꾸지 않음, 엉뚱한 곳을 고침, 문법 오류를 냄. 재시도 상한에서 멈추고 보고서를 쓴다.",
+  "attempts": [
+    {
+      "edits": [],
+      "cost_usd": 0.09,
+      "turns": 4,
+      "result": "실패 원인을 찾지 못하였다.\nFAIL"
+    },
+    {
+      "edits": [
+        {
+          "file": "api/jobs.py",
+          "old": "        item[\"days_left\"] = days_left(job)",
+          "new": "        item[\"days_left\"] = -days_left(job)"
+        }
+      ],
+      "cost_usd": 0.16,
+      "turns": 7,
+      "result": "목록의 남은 날 수 부호를 바꾸었다.\nOK"
+    },
+    {
+      "edits": [
+        {
+          "file": "api/jobs.py",
+          "old": "def days_left(job):",
+          "new": "def days_left(job)"
+        }
+      ],
+      "cost_usd": 0.21,
+      "turns": 9,
+      "result": "days_left()를 다시 썼다.\nOK"
+    }
+  ]
+}

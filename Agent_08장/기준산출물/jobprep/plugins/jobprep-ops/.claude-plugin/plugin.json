@@ -1,0 +1,10 @@
+{
+  "name": "jobprep-ops",
+  "displayName": "jobprep 운영 도구",
+  "version": "0.1.0",
+  "description": "jobprep 운영 기록으로 장애 보고서를 쓰고 서식을 검사하는 스킬 묶음",
+  "author": {
+    "name": "jobprep 운영팀"
+  },
+  "keywords": ["operations", "incident-report", "jobprep"]
+}
