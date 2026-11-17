@@ -1,0 +1,16 @@
+# jobprep 코드 소유자. 3장 양식: 저장소 루트의 CODEOWNERS로 복사한다.
+# 마지막으로 맞는 줄이 적용된다. 그러므로 넓은 패턴(*)을 위에, 좁은 패턴을 아래에 둔다.
+# @GitHub아이디를 자기 GitHub 아이디로 모두 바꾼다. '!'(부정)와 '[ ]'(문자 범위)는 쓸 수 없다.
+
+# 기본 소유자
+*                         @GitHub아이디
+
+# 규칙 파일
+/CLAUDE.md                @GitHub아이디
+「.claude 폴더」           @GitHub아이디
+「.github 폴더」           @GitHub아이디
+「이 파일 자신」           @GitHub아이디
+「저장소 규약 문서」        @GitHub아이디
+
+# 보호 자료
+「data 폴더」              @GitHub아이디

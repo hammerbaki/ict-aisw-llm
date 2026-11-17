@@ -1,0 +1,53 @@
+# 권한 판정 사례: 한 줄에 「호출 => 기대」를 쓴다. 기대는 deny(거부), ask(확인), allow(허용) 가운데 하나이다.
+# 설정: 교수/완성본/settings.json 과 같은 jobprep 팀 설정(.claude/settings.json)
+# 실행(저장소 폴더에서, 가상 환경을 켠 뒤): python ops/rules/perm_sim.py --cases ~/kits/Agent_03장/견본/판정사례.txt --settings .claude/settings.json
+
+# 1. allow 규칙에 맞는 명령
+Bash(python -m pytest -q) => allow
+Bash(git commit -m "docs: 저장소 규약 추가") => allow
+
+# 2. ask 규칙: 푸시는 매번 확인한다
+Bash(git push origin chore/team-rules) => ask
+
+# 3. deny가 ask보다 먼저다: 강제 푸시는 ask 규칙(git push *)에도 맞지만 거부된다. 옵션의 위치가 달라도 맞게 별표를 양쪽에 두었다
+Bash(git push --force origin main) => deny
+Bash(git push origin main --force-with-lease) => deny
+Bash(git commit -m "fix: 고침" --no-verify) => deny
+
+# 4. 복합 명령: 나누어 본다. 뒤쪽이 ask에 맞으므로 전체가 확인이다
+Bash(python -m pytest -q && git push origin main) => ask
+
+# 5. 읽기 거부: 파일 도구와, 파일 이름을 적은 cat에도 적용된다
+Read(.env) => deny
+Bash(cat .env) => deny
+
+# 6. !패턴으로 빼낸 견본 파일은 읽을 수 있다
+Read(.env.example) => allow
+
+# 7. Read 거부는 같은 경로의 편집도 막는다
+Edit(.env) => deny
+
+# 8. 보호 자료의 편집 거부
+Edit(data/jobs.json) => deny
+
+# 9. 판정 기준(2장)의 보호: 테스트의 편집은 확인하고, 동결 기록과 pytest 설정, 동결하기는 거부한다
+Bash(python tools/test_guard.py check) => allow
+Edit(tests/test_jobs.py) => ask
+Edit(tests/.baseline.json) => deny
+Edit(pytest.ini) => deny
+Bash(python tools/test_guard.py freeze --update) => deny
+
+# 10. 규칙 파일의 편집은 확인한다
+Edit(CLAUDE.md) => ask
+Edit(.claude/rules/api.md) => ask
+
+# 11. 맞는 규칙이 없는 편집은 기본 동작(확인)이다
+Edit(api/main.py) => ask
+
+# 12. 규칙의 한계: 같은 일을 다른 모양으로 쓰면 규칙에 맞지 않는다(기본 동작으로 넘어간다)
+Bash(git -C . push --force origin main) => ask
+Bash(python -c "print(open('.env').read())") => ask
+
+# 13. Windows의 가상 환경: 파이썬을 경로로 부르면 허용 규칙(python -m pytest *)의 글자에 맞지 않아 기본 동작(확인)이다.
+#     가상 환경을 켠 터미널에서 Claude Code를 띄우면 Claude는 대개 python으로 부른다(부록 A-9-1)
+Bash(.venv/Scripts/python -m pytest -q) => ask

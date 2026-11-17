@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# commit-msg 훅: 커밋 메시지가 저장소 규약(docs/운영/저장소규약.md)을 따르지 않으면 커밋을 멈춘다.
+# git은 이 파일을 저장소에서 자동으로 쓰지 않는다. 클론마다 한 번 다음을 실행해야 켜진다.
+#     git config core.hooksPath .githooks
+# 이 훅을 건너뛰는 git commit --no-verify는 팀 설정(.claude/settings.json)에서 에이전트에게 거부한다.
+root="$(git rev-parse --show-toplevel)"
+# 병합 커밋(git merge가 만드는 "Merge branch …")은 검사하지 않는다. 검사기의 --range도 병합 커밋을 뺀다.
+if git rev-parse -q --verify MERGE_HEAD >/dev/null; then exit 0; fi
+# 가상 환경을 켜지 않은 채 돌므로 저장소의 가상 환경 파이썬을 직접 찾는다(Windows는 Scripts, macOS는 bin. 부록 A-9-2).
+for py in "$root/.venv/Scripts/python.exe" "$root/.venv/bin/python" python python3; do
+  if command -v "$py" >/dev/null 2>&1; then
+    exec "$py" "$root/ops/rules/check_commits.py" --hook "$1"
+  fi
+done
+echo "commit-msg: 파이썬을 찾지 못해 커밋 메시지를 검사하지 않았다" >&2
+exit 0

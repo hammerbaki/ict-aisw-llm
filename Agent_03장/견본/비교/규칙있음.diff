@@ -1,0 +1,105 @@
+# 견본(규칙있음): 3장 키트의 규칙 유무 비교 견본이다. 집필자가 손으로 만든 변경이며 실제 모델의 출력이 아니다.
+# 요청 A: 요약 응답에 LLM 호출에 걸린 시간을 elapsed_ms(밀리초)로 넣는다. 요청 B: 공고 상세 화면에서 마감 7일 이하이면 제목 위에 '마감 임박'을 보인다.
+diff --git a/api/summary.py b/api/summary.py
+index 1771b9d..b5565cf 100644
+--- a/api/summary.py
++++ b/api/summary.py
+@@ -2,6 +2,7 @@
+ 
+ import json
+ import re
++import time
+ 
+ from api import llm
+ 
+@@ -56,8 +57,11 @@ def summarize(job_text):
+     version = llm.prompt_version("summary")
+     system, template = llm.load_prompt(version)
+     prompt = llm.fill(template, {"JOB_TEXT": job_text})
++    started = time.perf_counter()
+     reply = llm.complete(system, prompt, task="summary")
++    elapsed_ms = int((time.perf_counter() - started) * 1000)
+     result = validate_summary(parse_json(reply))
+     result["prompt_version"] = version
+     result["model"] = llm.model_name()
++    result["elapsed_ms"] = elapsed_ms  # REQ-SUM-06: LLM 호출에 걸린 시간(밀리초)
+     return result
+diff --git a/docs/요구사항명세서.md b/docs/요구사항명세서.md
+index 3a5d78d..f275e4f 100644
+--- a/docs/요구사항명세서.md
++++ b/docs/요구사항명세서.md
+@@ -46,6 +46,7 @@
+ |---|---|---|---|---|---|
+ | REQ-FAV-01 | 이벤트 | 사용자가 공고의 관심 표시를 누르면, 시스템은 그 공고를 브라우저에 관심 공고로 저장해야 한다. | 별표를 누른 뒤 페이지를 다시 열어도 별표가 채워져 있다. 서버에는 저장하지 않는다(localStorage) | 구현(수동) | 없음 |
+ | REQ-FAV-02 | 상태 | '관심 공고만 보기'가 켜져 있는 동안, 시스템은 관심 공고만 목록에 보여야 한다. | 체크 상자를 켜면 관심 공고만 남는다 | 구현(수동) | 없음 |
++| REQ-FAV-03 | 상태 | 공고의 마감까지 7일 이하인 동안, 시스템은 공고 상세 화면의 제목 위에 '마감 임박' 표시를 보여야 한다. | 마감 7일 이하의 공고에서 표시가 보이고, 8일 이상이거나 지난 공고에서는 보이지 않는다 | 구현(수동) | 없음 |
+ 
+ ### 3.3 공고 요약 (REQ-SUM)
+ 
+@@ -56,6 +57,7 @@
+ | REQ-SUM-03 | 상시 | 시스템은 요약 결과에 사용한 프롬프트 판본과 모델 이름을 함께 제공해야 한다. | 응답에 `prompt_version`, `model`이 있다 | 구현 | `test_summary_has_four_parts` |
+ | REQ-SUM-04 | 원치 않는 상황 | 만약 LLM을 부를 수 없으면 503으로, LLM의 응답을 요약 구조로 읽을 수 없으면 502로 응답해야 한다. | 응답 본문의 `detail`에 까닭이 있다 | 구현 | `test_summary_when_llm_fails_is_503`, `test_summary_when_reply_is_not_json_is_502` |
+ | REQ-SUM-05 | 원치 않는 상황 | 만약 요약할 본문이 비어 있거나 4,000자를 넘으면, 시스템은 LLM을 부르지 않고 422로 응답해야 한다. | 빈 문자열, 공백만 있는 문자열, 4,001자 문자열은 422이다. 4,000자는 받아들인다 | 구현 | `test_summary_limits.py`의 2개 함수 |
++| REQ-SUM-06 | 상시 | 시스템은 요약 결과에 LLM 호출에 걸린 시간을 밀리초로 함께 제공해야 한다. | 응답에 0 이상의 정수 `elapsed_ms`가 있다 | 구현 | `test_summary.py::test_summary_reports_elapsed_ms` |
+ 
+ ### 3.4 취업 자료 질의응답 (REQ-ASK)
+ 
+diff --git a/tests/test_summary.py b/tests/test_summary.py
+index 555c4fc..87647b6 100644
+--- a/tests/test_summary.py
++++ b/tests/test_summary.py
+@@ -59,3 +59,15 @@ def test_validate_summary_keeps_at_most_five_items():
+ def test_validate_summary_rejects_wrong_shape(bad):
+     with pytest.raises(summary.SummaryError):
+         summary.validate_summary(bad)
++
++
++@pytest.mark.req(id="REQ-SUM-06")
++def test_summary_reports_elapsed_ms(client, job_text):
++    body = client.post("/api/summary", json={"text": job_text}).json()
++    assert isinstance(body["elapsed_ms"], int)
++    assert body["elapsed_ms"] >= 0
++
++
++def test_summary_elapsed_ms_is_small_in_fake_mode(client, job_text):
++    body = client.post("/api/summary", json={"text": job_text}).json()
++    assert body["elapsed_ms"] < 1000
+diff --git a/web/css/style.css b/web/css/style.css
+index 8f05344..c5cbe67 100644
+--- a/web/css/style.css
++++ b/web/css/style.css
+@@ -105,3 +105,6 @@ button.star, #favorite {
+   font-size: 0.85rem;
+   color: var(--color-muted);
+ }
++
++/* REQ-FAV-03: 마감 임박 표시 */
++.banner { background: #fde8e8; color: #9b1c1c; padding: 0.5rem 0.75rem; border-radius: 4px; }
+diff --git a/web/job.html b/web/job.html
+index 925a5cf..610f8e7 100644
+--- a/web/job.html
++++ b/web/job.html
+@@ -21,6 +21,7 @@
+     <p id="status" class="status" role="status" aria-live="polite"></p>
+ 
+     <article id="job" hidden>
++      <p id="closing-banner" class="banner" hidden></p>
+       <h1 id="job-title"></h1>
+       <p id="job-meta" class="job-meta"></p>
+       <p id="job-deadline" class="job-deadline"></p>
+diff --git a/web/js/job.js b/web/js/job.js
+index a34ac38..a454889 100644
+--- a/web/js/job.js
++++ b/web/js/job.js
+@@ -56,6 +56,11 @@ async function loadJob() {
+   }
+   document.title = `${currentJob.title} - jobprep`;
+   document.getElementById("job-title").textContent = currentJob.title;
++  const banner = document.getElementById("closing-banner");
++  if (currentJob.days_left >= 0 && currentJob.days_left <= 7) {
++    banner.replaceChildren(el("strong", "마감 임박"), ` ${dDay(currentJob.days_left)}`);
++    banner.hidden = false;
++  }
+   document.getElementById("job-meta").textContent =
+     `${currentJob.company} · ${currentJob.field} · ${currentJob.location} · ${currentJob.employment_type} · ${currentJob.salary}`;
+   document.getElementById("job-deadline").textContent =

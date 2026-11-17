@@ -1,0 +1,22 @@
+feat(api): 공고 목록에 마감 임박 필터 추가
+
+closing_within=N이면 오늘부터 N일 안에 마감되는 공고만 돌려준다.
+
+Refs: REQ-JOB-06
+---
+fix: 빈 질문을 422로 거절
+---
+test(api): 요약 본문 길이의 경계값 테스트 추가
+---
+요약 응답에 걸린 시간 추가
+---
+Feat: 마감 임박 배너
+---
+docs(claude): CLAUDE.md에 실행 명령 추가.
+---
+update: 설정 파일 수정
+---
+feat(web)!: 공고 목록 응답의 days_left를 남은일로 이름 변경
+본문을 빈 줄 없이 바로 이어 썼다.
+---
+chore(claude): 팀 권한 설정에 git push 확인 규칙을 더하고 .env 읽기 거부와 data 폴더 편집 거부, 강제 푸시 거부를 추가
