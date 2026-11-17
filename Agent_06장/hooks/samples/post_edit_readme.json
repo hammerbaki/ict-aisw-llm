@@ -1,0 +1,12 @@
+{
+  "session_id": "sample-session",
+  "transcript_path": "C:/Users/student/.claude/projects/sample/sample-session.jsonl",
+  "cwd": "__PROJECT__",
+  "permission_mode": "default",
+  "hook_event_name": "PostToolUse",
+  "tool_name": "Edit",
+  "tool_input": {"file_path": "__PROJECT__/README.md", "old_string": "    return", "new_string": "    return", "replace_all": false},
+  "tool_response": {"filePath": "__PROJECT__/README.md"},
+  "tool_use_id": "toolu_sample_11",
+  "duration_ms": 12
+}

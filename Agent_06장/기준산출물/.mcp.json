@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "jobprep-ops": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["${CLAUDE_PROJECT_DIR:-.}/mcp/ops_server.py"],
+      "env": {}
+    }
+  }
+}
