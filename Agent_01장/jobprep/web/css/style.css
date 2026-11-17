@@ -1,0 +1,107 @@
+/* jobprep 공통 스타일. 디자인 토큰(색, 간격)은 :root에 모은다. */
+:root {
+  --color-text: #1f2328;
+  --color-muted: #57606a;
+  --color-primary: #0b5cad;
+  --color-border: #d0d7de;
+  --color-surface: #f6f8fa;
+  --color-error: #b42318;
+  --space: 1rem;
+  --radius: 8px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  color: var(--color-text);
+  line-height: 1.6;
+  background: #fff;
+}
+
+a { color: var(--color-primary); }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space);
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--space) / 2) var(--space);
+  border-bottom: 1px solid var(--color-border);
+}
+.site-header nav a { margin-left: var(--space); }
+.site-header nav a[aria-current="page"] { font-weight: 700; }
+.brand { font-weight: 800; font-size: 1.2rem; text-decoration: none; }
+
+main { max-width: 860px; margin: 0 auto; padding: var(--space); }
+
+.filters, .ask-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space);
+  align-items: flex-end;
+  padding: var(--space);
+  background: var(--color-surface);
+  border-radius: var(--radius);
+}
+.filters label { display: flex; flex-direction: column; font-size: 0.9rem; }
+.filters label.check { flex-direction: row; gap: 0.4rem; align-items: center; }
+.ask-form { flex-direction: column; align-items: stretch; }
+
+input, select, textarea, button { font: inherit; padding: 0.4rem 0.6rem; }
+button {
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius);
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.6; cursor: wait; }
+button.star, #favorite {
+  background: #fff;
+  color: var(--color-primary);
+}
+
+.status { min-height: 1.6em; color: var(--color-muted); }
+.status.error { color: var(--color-error); font-weight: 700; }
+
+.job-list { list-style: none; padding: 0; display: grid; gap: calc(var(--space) * 0.75); }
+.job-card {
+  position: relative;
+  padding: var(--space);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.job-card .star { position: absolute; top: var(--space); right: var(--space); font-size: 1.1rem; }
+.job-title { font-weight: 700; font-size: 1.05rem; }
+.job-meta, .job-deadline { margin: 0.2rem 0; color: var(--color-muted); }
+
+.actions { display: flex; gap: var(--space); margin: var(--space) 0; }
+.summary, .answer {
+  padding: var(--space);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+.description {
+  white-space: pre-wrap;
+  font-family: inherit;
+  padding: var(--space);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.note { font-size: 0.85rem; color: var(--color-muted); }
+
+.site-footer {
+  max-width: 860px;
+  margin: calc(var(--space) * 2) auto;
+  padding: 0 var(--space);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}

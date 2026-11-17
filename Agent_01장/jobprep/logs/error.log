@@ -1,0 +1,22 @@
+2027-09-08 14:03:47 WARNING jobprep.llm task=summary model=claude-haiku-5-5 error=RateLimitError
+2027-09-08 14:03:47 ERROR jobprep.api path=/api/summary status=503 error=LLMError detail="LLM 호출에 실패하였다: RateLimitError"
+2027-09-08 14:07:57 WARNING jobprep.llm task=summary model=claude-haiku-5-5 error=RateLimitError
+2027-09-08 14:07:57 ERROR jobprep.api path=/api/summary status=503 error=LLMError detail="LLM 호출에 실패하였다: RateLimitError"
+2027-09-08 14:12:19 WARNING jobprep.llm task=summary model=claude-haiku-5-5 error=RateLimitError
+2027-09-08 14:12:19 ERROR jobprep.api path=/api/summary status=503 error=LLMError detail="LLM 호출에 실패하였다: RateLimitError"
+2027-09-08 14:18:16 WARNING jobprep.llm task=summary model=claude-haiku-5-5 error=RateLimitError
+2027-09-08 14:18:16 ERROR jobprep.api path=/api/summary status=503 error=LLMError detail="LLM 호출에 실패하였다: RateLimitError"
+2027-09-08 14:22:03 WARNING jobprep.llm task=summary model=claude-haiku-5-5 error=RateLimitError
+2027-09-08 14:22:03 ERROR jobprep.api path=/api/summary status=503 error=LLMError detail="LLM 호출에 실패하였다: RateLimitError"
+2027-09-08 14:26:40 WARNING jobprep.llm task=summary model=claude-haiku-5-5 error=RateLimitError
+2027-09-08 14:26:40 ERROR jobprep.api path=/api/summary status=503 error=LLMError detail="LLM 호출에 실패하였다: RateLimitError"
+2027-09-08 14:33:42 WARNING jobprep.llm task=summary model=claude-haiku-5-5 error=RateLimitError
+2027-09-08 14:33:42 ERROR jobprep.api path=/api/summary status=503 error=LLMError detail="LLM 호출에 실패하였다: RateLimitError"
+2027-09-09 11:20:51 ERROR jobprep.api path=/api/summary status=502 error=SummaryError detail="응답에 JSON이 없다"
+2027-09-09 11:23:06 ERROR jobprep.api path=/api/summary status=502 error=SummaryError detail="응답에 JSON이 없다"
+2027-09-11 16:05:08 WARNING jobprep.llm task=ask model=claude-haiku-5-5 error=AuthenticationError
+2027-09-11 16:05:08 ERROR jobprep.api path=/api/ask status=503 error=LLMError detail="LLM 호출에 실패하였다: AuthenticationError"
+2027-09-11 16:06:02 WARNING jobprep.llm task=ask model=claude-haiku-5-5 error=AuthenticationError
+2027-09-11 16:06:02 ERROR jobprep.api path=/api/ask status=503 error=LLMError detail="LLM 호출에 실패하였다: AuthenticationError"
+2027-09-11 16:08:00 WARNING jobprep.llm task=ask model=claude-haiku-5-5 error=AuthenticationError
+2027-09-11 16:08:00 ERROR jobprep.api path=/api/ask status=503 error=LLMError detail="LLM 호출에 실패하였다: AuthenticationError"

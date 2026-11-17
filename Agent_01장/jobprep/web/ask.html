@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>취업 자료 질의응답 - jobprep</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">jobprep</a>
+    <nav aria-label="주 메뉴">
+      <a href="index.html">채용 공고</a>
+      <a href="ask.html" aria-current="page">취업 자료 질의응답</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>취업 자료 질의응답</h1>
+    <p>학과 취업 지원 자료(현장실습, 취업지원센터, 이력서, 포트폴리오, 자격증, 추천 채용)를 근거로 답한다.
+      자료에 없는 내용은 "자료에 없습니다."로 답한다.</p>
+
+    <form id="ask-form" class="ask-form">
+      <label for="question">질문</label>
+      <textarea id="question" rows="3" placeholder="예: 모의면접은 언제 열리나요?" required></textarea>
+      <button id="ask-button" type="submit">묻기</button>
+    </form>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <section id="result" class="answer" hidden aria-labelledby="answer-heading">
+      <h2 id="answer-heading">답</h2>
+      <p id="answer"></p>
+      <h3>근거</h3>
+      <ol id="sources"></ol>
+      <p id="answer-meta" class="note"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">실습용 가상 자료로 만든 서비스이다. 실제 학과의 규정이 아니다.</footer>
+
+  <script src="js/common.js"></script>
+  <script src="js/ask.js"></script>
+</body>
+</html>

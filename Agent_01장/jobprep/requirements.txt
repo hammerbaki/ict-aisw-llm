@@ -1,0 +1,8 @@
+# 직접 쓰는 패키지만 버전을 고정한다(2026-11-14 확인). 의존성 전체의 잠금 파일은 13장에서 만든다.
+fastapi==0.162.7
+uvicorn==0.54.0
+anthropic==2.8.0
+python-dotenv==1.2.4
+# 테스트용: FastAPI의 TestClient가 httpx를 쓴다
+httpx==0.28.1
+pytest==9.2.0
