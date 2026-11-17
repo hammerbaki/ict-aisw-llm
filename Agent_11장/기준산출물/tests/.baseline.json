@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "frozen_at": "2026-11-17T02:40:40",
+  "files": {
+    "pytest.ini": "84c4f889fa55c28b6483857f7a0d41f6b7b2c3f28ed6d12f8bd8b35d6ccac61d",
+    "tests/conftest.py": "649c9fd95852626f95f9832300f609cff74b41f1a91fb35367ebd03e07338b87",
+    "tests/test_ask.py": "97b1d44414f28cde7753f75193248770767313917750afc5b01e641ef8b74fb6",
+    "tests/test_ask_limits.py": "14ea0d05e016d36f69179b1b858976af03569f6d20a383f8f15e672fc35ca9bc",
+    "tests/test_closing_within.py": "160046411b5f180c9a5b50a1c4ec4f9f786e75b29d7b2f7205379893568db2ac",
+    "tests/test_jobs.py": "97b4fdb149bd54f24f4ad89660d1e96770786ed9f0b4378aa647ed38dc975ab6",
+    "tests/test_llm.py": "5ada142a8965a2a99f407bb80721c736fde338d3a219df317cff85dc7adb6e39",
+    "tests/test_rag.py": "d238da71670b0093d8e102b28f1208ec5c23b6f9a5c45bad0f38f5e0c099c27b",
+    "tests/test_summary.py": "a8f6545e14fc500584e37bdc74c9beb8070739e7936e3918d9630384a2413dde",
+    "tests/test_summary_limits.py": "2fd827b63471675376951ef346aaf6aa0f54789e3d1a0cf3e14a4e40be7f272d",
+    "tools/test_guard.py": "65ae78883cc5a0e8767499d3fb48552124df753fa7c00b4babc3d68ab4110a04"
+  }
+}

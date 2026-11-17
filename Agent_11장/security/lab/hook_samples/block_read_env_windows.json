@@ -1,0 +1,1 @@
+{"session_id": "sample", "transcript_path": "", "cwd": "__PROJECT_WIN__", "permission_mode": "default", "hook_event_name": "PreToolUse", "tool_use_id": "toolu_sample", "tool_name": "Read", "tool_input": {"file_path": "__PROJECT_WIN__\\.ENV"}}

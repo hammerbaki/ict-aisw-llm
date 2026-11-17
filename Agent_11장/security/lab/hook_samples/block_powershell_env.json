@@ -1,0 +1,1 @@
+{"session_id": "sample", "transcript_path": "", "cwd": "__PROJECT__", "permission_mode": "default", "hook_event_name": "PreToolUse", "tool_use_id": "toolu_sample", "tool_name": "PowerShell", "tool_input": {"command": "Get-ChildItem env:", "description": "sample"}}

@@ -1,0 +1,10 @@
+{
+  "session_id": "sample-session",
+  "transcript_path": "/home/student/.claude/projects/sample/sample-session.jsonl",
+  "cwd": "__PROJECT__",
+  "permission_mode": "default",
+  "hook_event_name": "PreToolUse",
+  "tool_name": "Edit",
+  "tool_input": {"file_path": "__PROJECT__/api/jobs.py", "old_string": "def load_jobs():", "new_string": "def load_jobs():", "replace_all": false},
+  "tool_use_id": "toolu_sample_06"
+}

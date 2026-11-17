@@ -1,0 +1,1 @@
+{"session_id": "sample", "transcript_path": "", "cwd": "__PROJECT__", "permission_mode": "default", "hook_event_name": "PreToolUse", "tool_name": "Bash", "tool_use_id": "toolu_sample", "tool_input": {"command": "cat se\"cr\"ets/실습용_가짜키.txt", "description": "sample"}}

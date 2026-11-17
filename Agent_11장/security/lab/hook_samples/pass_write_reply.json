@@ -1,0 +1,1 @@
+{"session_id": "sample", "transcript_path": "", "cwd": "__PROJECT__", "permission_mode": "default", "hook_event_name": "PreToolUse", "tool_name": "Write", "tool_input": {"file_path": "__PROJECT__/security/out/reply.md", "content": "답글 초안: 마감일 표시를 확인하겠다.\n"}, "tool_use_id": "toolu_sample"}
