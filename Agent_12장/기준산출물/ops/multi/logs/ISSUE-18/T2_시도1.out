@@ -1,0 +1,1 @@
+{"type": "result", "subtype": "success", "is_error": false, "duration_ms": 256500, "num_turns": 8, "result": "README의 API 절에서 질의응답 응답 예시를 새 형식으로 고쳤다.\nOK", "session_id": "issue-18-t2-1", "total_cost_usd": 0.31}

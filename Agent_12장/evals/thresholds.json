@@ -1,0 +1,22 @@
+{
+  "min_runs": 3,
+  "max_drop_from_baseline": 0.05,
+  "summary": {
+    "min_pass_rate": 0.80,
+    "min_criteria": {
+      "structure": 0.95,
+      "deadline": 0.95,
+      "length": 0.95,
+      "preferred": 0.95,
+      "judge": 0.90
+    }
+  },
+  "ask": {
+    "min_pass_rate": 0.85,
+    "min_criteria": {
+      "refusal": 1.00,
+      "citation": 0.85,
+      "judge": 0.90
+    }
+  }
+}

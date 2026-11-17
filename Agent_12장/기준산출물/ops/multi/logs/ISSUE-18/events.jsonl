@@ -1,0 +1,16 @@
+{"time":"2027-11-17T09:31:02","issue":"ISSUE-18","actor":"coordinator","event":"worktree_created","task":"T1","detail":".claude/worktrees/issue-18-t1 agent/issue-18-t1"}
+{"time":"2027-11-17T09:31:08","issue":"ISSUE-18","actor":"coordinator","event":"worktree_created","task":"T2","detail":".claude/worktrees/issue-18-t2 agent/issue-18-t2"}
+{"time":"2027-11-17T09:31:25","issue":"ISSUE-18","actor":"coordinator","event":"run_started","task":"","detail":"tasks=T1 T2 max=3"}
+{"time":"2027-11-17T09:31:28","issue":"ISSUE-18","actor":"implementer:T1","event":"dispatched","task":"T1","detail":"attempt=1 cmd=bash"}
+{"time":"2027-11-17T09:31:29","issue":"ISSUE-18","actor":"implementer:T2","event":"dispatched","task":"T2","detail":"attempt=1 cmd=bash"}
+{"time":"2027-11-17T09:35:47","issue":"ISSUE-18","actor":"implementer:T2","event":"finished","task":"T2","detail":"attempt=1 exit=0 seconds=258"}
+{"time":"2027-11-17T09:36:02","issue":"ISSUE-18","actor":"implementer:T1","event":"finished","task":"T1","detail":"attempt=1 exit=0 seconds=274"}
+{"time":"2027-11-17T09:36:40","issue":"ISSUE-18","actor":"judge","event":"judged","task":"T1","detail":"verdict=통과 commit=c4a81f9"}
+{"time":"2027-11-17T09:37:05","issue":"ISSUE-18","actor":"judge","event":"judged","task":"T2","detail":"verdict=통과 commit=2e6d95b"}
+{"time":"2027-11-17T09:37:05","issue":"ISSUE-18","actor":"coordinator","event":"ready_to_merge","task":"","detail":"passed=T1 T2"}
+{"time":"2027-11-17T09:54:18","issue":"ISSUE-18","actor":"human","event":"merge_conflict","task":"T1","detail":"files=docs/요구사항명세서.md "}
+{"time":"2027-11-17T10:10:52","issue":"ISSUE-18","actor":"judge","event":"judged","task":"T1","detail":"verdict=통과 commit=b7d1e04"}
+{"time":"2027-11-17T10:12:15","issue":"ISSUE-18","actor":"human","event":"merged","task":"T1","detail":"commit=6f30b2e"}
+{"time":"2027-11-17T10:12:37","issue":"ISSUE-18","actor":"human","event":"merged","task":"T2","detail":"commit=f05a3c9"}
+{"time":"2027-11-17T10:13:30","issue":"ISSUE-18","actor":"coordinator","event":"cleaned","task":"T1","detail":".claude/worktrees/issue-18-t1 agent/issue-18-t1"}
+{"time":"2027-11-17T10:13:33","issue":"ISSUE-18","actor":"coordinator","event":"cleaned","task":"T2","detail":".claude/worktrees/issue-18-t2 agent/issue-18-t2"}

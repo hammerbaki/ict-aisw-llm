@@ -1,0 +1,1 @@
+{"type": "result", "subtype": "success", "is_error": false, "duration_ms": 310500, "num_turns": 10, "result": "질의응답 응답의 sources에 자료 문서의 경로를 더하였다.\nOK", "session_id": "issue-15-t1-1", "total_cost_usd": 0.34}

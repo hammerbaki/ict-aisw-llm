@@ -1,0 +1,1 @@
+{"type": "result", "subtype": "success", "is_error": false, "duration_ms": 253500, "num_turns": 9, "result": "closing_soon 칸을 공고 목록 응답에 더하고 인수 테스트를 통과시켰다.\nOK", "session_id": "issue-12-t1-1", "total_cost_usd": 0.31}

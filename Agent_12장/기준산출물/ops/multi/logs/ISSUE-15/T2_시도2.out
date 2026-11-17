@@ -1,0 +1,1 @@
+{"type": "result", "subtype": "success", "is_error": false, "duration_ms": 104500, "num_turns": 4, "result": "직전 판정의 거부 사유(W1, innerHTML)를 고쳐 링크를 el()로 만들었다.\nOK", "session_id": "issue-15-t2-2", "total_cost_usd": 0.14}

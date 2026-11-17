@@ -1,0 +1,14 @@
+{"time":"2027-11-15T10:05:12","issue":"ISSUE-12","actor":"coordinator","event":"worktree_created","task":"T1","detail":".claude/worktrees/issue-12-t1 agent/issue-12-t1"}
+{"time":"2027-11-15T10:05:18","issue":"ISSUE-12","actor":"coordinator","event":"worktree_created","task":"T2","detail":".claude/worktrees/issue-12-t2 agent/issue-12-t2"}
+{"time":"2027-11-15T10:05:40","issue":"ISSUE-12","actor":"coordinator","event":"run_started","task":"","detail":"tasks=T1 T2 max=3"}
+{"time":"2027-11-15T10:05:43","issue":"ISSUE-12","actor":"implementer:T1","event":"dispatched","task":"T1","detail":"attempt=1 cmd=bash"}
+{"time":"2027-11-15T10:05:44","issue":"ISSUE-12","actor":"implementer:T2","event":"dispatched","task":"T2","detail":"attempt=1 cmd=bash"}
+{"time":"2027-11-15T10:09:16","issue":"ISSUE-12","actor":"implementer:T2","event":"finished","task":"T2","detail":"attempt=1 exit=0 seconds=212"}
+{"time":"2027-11-15T10:09:58","issue":"ISSUE-12","actor":"implementer:T1","event":"finished","task":"T1","detail":"attempt=1 exit=0 seconds=255"}
+{"time":"2027-11-15T10:10:31","issue":"ISSUE-12","actor":"judge","event":"judged","task":"T1","detail":"verdict=통과 commit=3f1a9c2"}
+{"time":"2027-11-15T10:10:59","issue":"ISSUE-12","actor":"judge","event":"judged","task":"T2","detail":"verdict=통과 commit=8b04e71"}
+{"time":"2027-11-15T10:10:59","issue":"ISSUE-12","actor":"coordinator","event":"ready_to_merge","task":"","detail":"passed=T1 T2"}
+{"time":"2027-11-15T10:24:37","issue":"ISSUE-12","actor":"human","event":"merged","task":"T1","detail":"commit=a61d0f4"}
+{"time":"2027-11-15T10:24:58","issue":"ISSUE-12","actor":"human","event":"merged","task":"T2","detail":"commit=c2e93b8"}
+{"time":"2027-11-15T10:26:10","issue":"ISSUE-12","actor":"coordinator","event":"cleaned","task":"T1","detail":".claude/worktrees/issue-12-t1 agent/issue-12-t1"}
+{"time":"2027-11-15T10:26:13","issue":"ISSUE-12","actor":"coordinator","event":"cleaned","task":"T2","detail":".claude/worktrees/issue-12-t2 agent/issue-12-t2"}

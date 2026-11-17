@@ -1,0 +1,11 @@
+{
+  "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+  "checked": "2026-11-14",
+  "note": "백만 토큰당 USD 정가. 프롬프트 10만 토큰 이하의 가격. 캐시와 배치 할인은 넣지 않았다. 수업 전에 다시 확인한다.",
+  "models": {
+    "claude-haiku-5-5": {"input_per_mtok": 0.10, "output_per_mtok": 0.50},
+    "claude-sonnet-5-5": {"input_per_mtok": 2.00, "output_per_mtok": 10.00},
+    "claude-opus-5-5": {"input_per_mtok": 4.00, "output_per_mtok": 20.00},
+    "fake": {"input_per_mtok": 0.0, "output_per_mtok": 0.0}
+  }
+}

@@ -1,0 +1,1 @@
+{"type": "result", "subtype": "success", "is_error": false, "duration_ms": 272500, "num_turns": 8, "result": "요구사항 명세서의 REQ-ASK 표를 응답 형식에 맞추어 고쳤다.\nOK", "session_id": "issue-18-t1-1", "total_cost_usd": 0.33}

@@ -1,0 +1,10 @@
+{"id": "A01", "suite": "regression", "kind": "대표", "note": "대표", "question": "현장실습 학기제는 몇 주 동안 하나요?", "expect": {"not_found": false, "keywords": ["15주"], "source": "01_현장실습_안내.md"}}
+{"id": "A02", "suite": "regression", "kind": "대표", "note": "대표", "question": "현장실습을 끝내면 학점을 몇 학점 받나요?", "expect": {"not_found": false, "keywords": ["15학점"], "source": "01_현장실습_안내.md"}}
+{"id": "A03", "suite": "regression", "kind": "대표", "note": "대표", "question": "취업 상담은 한 주에 몇 번 예약할 수 있나요?", "expect": {"not_found": false, "keywords": ["두 번"], "source": "02_취업지원센터_이용안내.md"}}
+{"id": "A04", "suite": "regression", "kind": "대표", "note": "대표", "question": "모의면접은 언제 열리나요?", "expect": {"not_found": false, "keywords": ["둘째 주", "넷째 주"], "source": "02_취업지원센터_이용안내.md"}}
+{"id": "A05", "suite": "regression", "kind": "대표", "note": "대표", "question": "자격증 응시료는 한 해에 얼마까지 지원받나요?", "expect": {"not_found": false, "keywords": ["15만 원"], "source": "05_자격증_응시료_지원.md"}}
+{"id": "A06", "suite": "regression", "kind": "대표", "note": "대표", "question": "채용 박람회는 언제 열리나요?", "expect": {"not_found": false, "keywords": ["10월 셋째 주"], "source": "06_학과추천채용_및_채용박람회.md"}}
+{"id": "A07", "suite": "regression", "kind": "경계", "note": "경계: 구어체 질문", "question": "면접 볼 때 입을 정장 빌릴 수 있어요?", "expect": {"not_found": false, "keywords": ["무료"], "source": "02_취업지원센터_이용안내.md"}}
+{"id": "A08", "suite": "regression", "kind": "경계", "note": "경계: 범위 밖 질문", "question": "학생 식당 이번 주 메뉴가 뭐예요?", "expect": {"not_found": true, "keywords": [], "source": null}}
+{"id": "A09", "suite": "regression", "kind": "경계", "note": "경계: 기준값에 가까운 범위 밖 질문", "question": "현장실습 기관이 주는 교통비는 얼마인가요?", "expect": {"not_found": true, "keywords": [], "source": null}}
+{"id": "A10", "suite": "capability", "kind": "경계", "note": "경계: 목록에 없는 대상", "question": "리눅스마스터 1급도 응시료를 지원하나요?", "expect": {"not_found": false, "keywords": ["학과 회의"], "source": "05_자격증_응시료_지원.md"}}
