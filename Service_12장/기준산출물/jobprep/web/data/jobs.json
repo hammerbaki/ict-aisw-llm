@@ -1,0 +1,613 @@
+{
+  "meta": {
+    "title": "수업용 가상 채용 공고",
+    "notice": "모든 기업명과 공고는 수업을 위해 지어낸 것이다. 실제 기업·공고와 관계없다.",
+    "version": "2027-1",
+    "count": 30
+  },
+  "jobs": [
+    {
+      "id": "JOB-001",
+      "title": "주니어 프런트엔드 개발자",
+      "company": "별무리데이터",
+      "category": "웹개발",
+      "region": "원격",
+      "employment_type": "정규직",
+      "career": "신입",
+      "education": "학력무관",
+      "posted": "2027-04-06",
+      "deadline": "2027-05-10",
+      "summary": "사내 예약 서비스의 화면을 HTML·CSS·자바스크립트로 개발하고 유지보수한다.",
+      "requirements": [
+        "HTML·CSS·자바스크립트 기초",
+        "Git 사용 경험"
+      ],
+      "preferred": [
+        "반응형 화면 제작 경험",
+        "접근성 지침 이해"
+      ]
+    },
+    {
+      "id": "JOB-002",
+      "title": "웹 서비스 개발 인턴",
+      "company": "솔바람시스템즈",
+      "category": "웹개발",
+      "region": "부산",
+      "employment_type": "인턴",
+      "career": "경력무관",
+      "education": "전문학사 이상",
+      "posted": "2027-04-07",
+      "deadline": "2027-05-19",
+      "summary": "고객 문의 게시판과 관리자 화면의 기능을 개선한다.",
+      "requirements": [
+        "웹 기초 과목 이수",
+        "파이썬 또는 자바스크립트 사용 경험"
+      ],
+      "preferred": [
+        "개인 프로젝트 배포 경험"
+      ]
+    },
+    {
+      "id": "JOB-003",
+      "title": "백엔드 개발자(신입)",
+      "company": "도담에이아이랩",
+      "category": "웹개발",
+      "region": "대전",
+      "employment_type": "계약직",
+      "career": "신입",
+      "education": "전문학사 이상",
+      "posted": "2027-04-08",
+      "deadline": "2027-06-04",
+      "summary": "쇼핑몰 주문 API를 FastAPI로 개발하고 테스트를 작성한다.",
+      "requirements": [
+        "파이썬 기초",
+        "HTTP와 REST의 이해"
+      ],
+      "preferred": [
+        "SQL 사용 경험",
+        "테스트 코드 작성 경험"
+      ]
+    },
+    {
+      "id": "JOB-004",
+      "title": "풀스택 개발자(신입)",
+      "company": "온새미로웹",
+      "category": "웹개발",
+      "region": "인천",
+      "employment_type": "정규직",
+      "career": "신입",
+      "education": "학력무관",
+      "posted": "2027-04-09",
+      "deadline": "2027-05-31",
+      "summary": "교육 플랫폼의 화면과 서버 기능을 함께 개발한다.",
+      "requirements": [
+        "웹 화면과 서버의 기초",
+        "Git 협업 경험"
+      ],
+      "preferred": [
+        "클라우드 배포 경험"
+      ]
+    },
+    {
+      "id": "JOB-005",
+      "title": "웹 퍼블리셔",
+      "company": "다솜클라우드",
+      "category": "웹개발",
+      "region": "경기",
+      "employment_type": "정규직",
+      "career": "경력무관",
+      "education": "전문학사 이상",
+      "posted": "2027-04-10",
+      "deadline": null,
+      "summary": "디자인 시안을 표준에 맞는 HTML·CSS로 구현한다.",
+      "requirements": [
+        "HTML·CSS 숙련",
+        "브라우저 개발자 도구 사용"
+      ],
+      "preferred": [
+        "웹 접근성 인증 실무 경험"
+      ]
+    },
+    {
+      "id": "JOB-006",
+      "title": "모바일 웹 개발자",
+      "company": "하람테크웍스",
+      "category": "웹개발",
+      "region": "서울",
+      "employment_type": "정규직",
+      "career": "신입",
+      "education": "전문학사 이상",
+      "posted": "2027-04-11",
+      "deadline": "2027-06-18",
+      "summary": "모바일 화면 중심의 공공 안내 서비스를 개발한다.",
+      "requirements": [
+        "자바스크립트 기초",
+        "반응형 레이아웃 이해"
+      ],
+      "preferred": [
+        "PWA 제작 경험"
+      ]
+    },
+    {
+      "id": "JOB-007",
+      "title": "데이터 분석 보조",
+      "company": "온새미로웹",
+      "category": "데이터",
+      "region": "원격",
+      "employment_type": "인턴",
+      "career": "신입",
+      "education": "학력무관",
+      "posted": "2027-04-12",
+      "deadline": "2027-05-17",
+      "summary": "판매 데이터를 정리하고 주간 보고서를 만든다.",
+      "requirements": [
+        "파이썬 pandas 기초",
+        "엑셀 함수 사용"
+      ],
+      "preferred": [
+        "시각화 도구 사용 경험"
+      ]
+    },
+    {
+      "id": "JOB-008",
+      "title": "데이터 엔지니어(신입)",
+      "company": "다솜클라우드",
+      "category": "데이터",
+      "region": "부산",
+      "employment_type": "계약직",
+      "career": "경력무관",
+      "education": "전문학사 이상",
+      "posted": "2027-04-13",
+      "deadline": "2027-06-11",
+      "summary": "수집한 로그를 정제해 데이터베이스에 적재하는 파이프라인을 운영한다.",
+      "requirements": [
+        "파이썬 기초",
+        "SQL 기초"
+      ],
+      "preferred": [
+        "리눅스 명령어 사용",
+        "스케줄러 사용 경험"
+      ]
+    },
+    {
+      "id": "JOB-009",
+      "title": "데이터 라벨링 품질 담당",
+      "company": "하람테크웍스",
+      "category": "데이터",
+      "region": "대전",
+      "employment_type": "정규직",
+      "career": "신입",
+      "education": "전문학사 이상",
+      "posted": "2027-04-14",
+      "deadline": "2027-05-24",
+      "summary": "학습 데이터의 라벨 기준을 관리하고 검수한다.",
+      "requirements": [
+        "문서 작성 능력",
+        "꼼꼼한 검수 태도"
+      ],
+      "preferred": [
+        "데이터 관련 자격증"
+      ]
+    },
+    {
+      "id": "JOB-010",
+      "title": "BI 리포트 개발자",
+      "company": "늘봄소프트",
+      "category": "데이터",
+      "region": "인천",
+      "employment_type": "정규직",
+      "career": "신입",
+      "education": "학력무관",
+      "posted": "2027-04-15",
+      "deadline": "2027-07-02",
+      "summary": "경영 지표 대시보드를 만들고 유지보수한다.",
+      "requirements": [
+        "SQL 기초",
+        "지표의 개념 이해"
+      ],
+      "preferred": [
+        "대시보드 도구 사용 경험"
+      ]
+    },
+    {
+      "id": "JOB-011",
+      "title": "공공데이터 활용 개발자",
+      "company": "가온정보기술",
+      "category": "데이터",
+      "region": "경기",
+      "employment_type": "정규직",
+      "career": "경력무관",
+      "education": "전문학사 이상",
+      "posted": "2027-04-16",
+      "deadline": "2027-05-14",
+      "summary": "공공데이터 API를 수집해 지역 정보 서비스에 연결한다.",
+      "requirements": [
+        "파이썬 기초",
+        "JSON 처리"
+      ],
+      "preferred": [
+        "공공데이터포털 API 사용 경험"
+      ]
+    },
+    {
+      "id": "JOB-012",
+      "title": "데이터 운영 인턴",
+      "company": "새벽별랩스",
+      "category": "데이터",
+      "region": "서울",
+      "employment_type": "인턴",
+      "career": "신입",
+      "education": "전문학사 이상",
+      "posted": "2027-04-17",
+      "deadline": "2027-06-25",
+      "summary": "고객 데이터의 품질 점검과 개인정보 비식별 처리를 돕는다.",
+      "requirements": [
+        "엑셀 사용",
+        "개인정보 보호의 기초 이해"
+      ],
+      "preferred": [
+        "파이썬 사용 경험"
+      ]
+    },
+    {
+      "id": "JOB-013",
+      "title": "AI 서비스 개발자(신입)",
+      "company": "늘봄소프트",
+      "category": "AI서비스",
+      "region": "원격",
+      "employment_type": "계약직",
+      "career": "신입",
+      "education": "학력무관",
+      "posted": "2027-04-18",
+      "deadline": "2027-05-20",
+      "summary": "LLM API를 연결한 상담 보조 기능을 개발한다.",
+      "requirements": [
+        "파이썬 기초",
+        "API 호출 경험"
+      ],
+      "preferred": [
+        "프롬프트 설계 경험",
+        "FastAPI 사용 경험"
+      ]
+    },
+    {
+      "id": "JOB-014",
+      "title": "프롬프트 엔지니어 인턴",
+      "company": "가온정보기술",
+      "category": "AI서비스",
+      "region": "부산",
+      "employment_type": "정규직",
+      "career": "경력무관",
+      "education": "전문학사 이상",
+      "posted": "2027-04-19",
+      "deadline": null,
+      "summary": "업무별 프롬프트를 설계하고 평가 문항으로 비교한다.",
+      "requirements": [
+        "글쓰기와 논리적 구성 능력",
+        "생성형 AI 도구 사용 경험"
+      ],
+      "preferred": [
+        "평가 기준표 작성 경험"
+      ]
+    },
+    {
+      "id": "JOB-015",
+      "title": "AI 데이터 큐레이터",
+      "company": "새벽별랩스",
+      "category": "AI서비스",
+      "region": "대전",
+      "employment_type": "정규직",
+      "career": "신입",
+      "education": "전문학사 이상",
+      "posted": "2027-04-20",
+      "deadline": "2027-06-07",
+      "summary": "검색 증강 생성에 쓰는 문서를 수집하고 정리한다.",
+      "requirements": [
+        "문서 분류 능력",
+        "파이썬 기초"
+      ],
+      "preferred": [
+        "RAG 개념 이해"
+      ]
+    },
+    {
+      "id": "JOB-016",
+      "title": "챗봇 기획·운영 담당",
+      "company": "바름큐에이",
+      "category": "AI서비스",
+      "region": "인천",
+      "employment_type": "정규직",
+      "career": "신입",
+      "education": "학력무관",
+      "posted": "2027-04-21",
+      "deadline": "2027-05-28",
+      "summary": "고객 응대 챗봇의 대화 흐름을 설계하고 응답 품질을 관리한다.",
+      "requirements": [
+        "서비스 기획의 기초",
+        "문서 작성 능력"
+      ],
+      "preferred": [
+        "사용성 평가 경험"
+      ]
+    },
+    {
+      "id": "JOB-017",
+      "title": "AI 응용 개발 인턴",
+      "company": "별무리데이터",
+      "category": "AI서비스",
+      "region": "경기",
+      "employment_type": "인턴",
+      "career": "경력무관",
+      "education": "전문학사 이상",
+      "posted": "2027-04-22",
+      "deadline": "2027-06-30",
+      "summary": "사내 문서 요약 도구를 개발하고 사용자 의견을 반영한다.",
+      "requirements": [
+        "파이썬 기초",
+        "Git 사용 경험"
+      ],
+      "preferred": [
+        "Claude Code 등 AI 코딩 도구 사용 경험"
+      ]
+    },
+    {
+      "id": "JOB-018",
+      "title": "머신러닝 운영 보조",
+      "company": "솔바람시스템즈",
+      "category": "AI서비스",
+      "region": "서울",
+      "employment_type": "계약직",
+      "career": "신입",
+      "education": "전문학사 이상",
+      "posted": "2027-04-23",
+      "deadline": "2027-05-21",
+      "summary": "모델 예측 결과를 모니터링하고 이상 사례를 보고한다.",
+      "requirements": [
+        "파이썬 기초",
+        "통계 기초"
+      ],
+      "preferred": [
+        "리눅스 서버 사용 경험"
+      ]
+    },
+    {
+      "id": "JOB-019",
+      "title": "소프트웨어 테스터(신입)",
+      "company": "바름큐에이",
+      "category": "QA·테스트",
+      "region": "원격",
+      "employment_type": "정규직",
+      "career": "신입",
+      "education": "학력무관",
+      "posted": "2027-04-24",
+      "deadline": "2027-06-14",
+      "summary": "웹 서비스의 기능 테스트를 설계하고 결함을 보고한다.",
+      "requirements": [
+        "테스트 케이스 작성 능력",
+        "결함 보고서 작성"
+      ],
+      "preferred": [
+        "자동화 테스트 도구 사용 경험"
+      ]
+    },
+    {
+      "id": "JOB-020",
+      "title": "테스트 자동화 엔지니어",
+      "company": "별무리데이터",
+      "category": "QA·테스트",
+      "region": "부산",
+      "employment_type": "정규직",
+      "career": "경력무관",
+      "education": "전문학사 이상",
+      "posted": "2027-04-05",
+      "deadline": "2027-05-26",
+      "summary": "브라우저 자동화 도구로 회귀 테스트를 만든다.",
+      "requirements": [
+        "파이썬 또는 자바스크립트 기초",
+        "웹 구조 이해"
+      ],
+      "preferred": [
+        "Playwright 사용 경험"
+      ]
+    },
+    {
+      "id": "JOB-021",
+      "title": "QA 인턴",
+      "company": "솔바람시스템즈",
+      "category": "QA·테스트",
+      "region": "대전",
+      "employment_type": "정규직",
+      "career": "신입",
+      "education": "전문학사 이상",
+      "posted": "2027-04-06",
+      "deadline": "2027-05-12",
+      "summary": "앱 출시 전 점검표에 따라 기능과 화면을 확인한다.",
+      "requirements": [
+        "꼼꼼한 점검 태도",
+        "문서 작성 능력"
+      ],
+      "preferred": [
+        "모바일 기기 테스트 경험"
+      ]
+    },
+    {
+      "id": "JOB-022",
+      "title": "접근성 품질 담당",
+      "company": "도담에이아이랩",
+      "category": "QA·테스트",
+      "region": "인천",
+      "employment_type": "인턴",
+      "career": "신입",
+      "education": "학력무관",
+      "posted": "2027-04-07",
+      "deadline": "2027-06-21",
+      "summary": "웹 접근성 지침에 따라 화면을 점검하고 개선안을 낸다.",
+      "requirements": [
+        "WCAG의 기초 이해",
+        "HTML 기초"
+      ],
+      "preferred": [
+        "스크린 리더 사용 경험"
+      ]
+    },
+    {
+      "id": "JOB-023",
+      "title": "게임 QA 테스터",
+      "company": "온새미로웹",
+      "category": "QA·테스트",
+      "region": "경기",
+      "employment_type": "계약직",
+      "career": "경력무관",
+      "education": "전문학사 이상",
+      "posted": "2027-04-08",
+      "deadline": null,
+      "summary": "게임의 기능·밸런스 결함을 찾아 보고한다.",
+      "requirements": [
+        "결함 재현 절차 작성 능력"
+      ],
+      "preferred": [
+        "게임 장르 이해"
+      ]
+    },
+    {
+      "id": "JOB-024",
+      "title": "품질 데이터 분석 보조",
+      "company": "다솜클라우드",
+      "category": "QA·테스트",
+      "region": "서울",
+      "employment_type": "정규직",
+      "career": "신입",
+      "education": "전문학사 이상",
+      "posted": "2027-04-09",
+      "deadline": "2027-06-09",
+      "summary": "결함 통계를 정리하고 재발 방지 보고서를 쓴다.",
+      "requirements": [
+        "엑셀 사용",
+        "문서 작성 능력"
+      ],
+      "preferred": [
+        "SQL 기초"
+      ]
+    },
+    {
+      "id": "JOB-025",
+      "title": "클라우드 운영 엔지니어(신입)",
+      "company": "도담에이아이랩",
+      "category": "인프라·클라우드",
+      "region": "원격",
+      "employment_type": "정규직",
+      "career": "신입",
+      "education": "학력무관",
+      "posted": "2027-04-10",
+      "deadline": "2027-05-18",
+      "summary": "웹 서비스의 서버와 배포 파이프라인을 운영한다.",
+      "requirements": [
+        "리눅스 기초",
+        "네트워크 기초"
+      ],
+      "preferred": [
+        "클라우드 자격증",
+        "CI/CD 사용 경험"
+      ]
+    },
+    {
+      "id": "JOB-026",
+      "title": "시스템 운영 인턴",
+      "company": "온새미로웹",
+      "category": "인프라·클라우드",
+      "region": "부산",
+      "employment_type": "정규직",
+      "career": "경력무관",
+      "education": "전문학사 이상",
+      "posted": "2027-04-11",
+      "deadline": "2027-06-03",
+      "summary": "사내 서버의 계정과 백업을 관리한다.",
+      "requirements": [
+        "리눅스 명령어 사용"
+      ],
+      "preferred": [
+        "셸 스크립트 작성 경험"
+      ]
+    },
+    {
+      "id": "JOB-027",
+      "title": "네트워크 관리자(신입)",
+      "company": "다솜클라우드",
+      "category": "인프라·클라우드",
+      "region": "대전",
+      "employment_type": "인턴",
+      "career": "신입",
+      "education": "전문학사 이상",
+      "posted": "2027-04-12",
+      "deadline": "2027-07-09",
+      "summary": "사무실 네트워크 장비를 설정하고 장애를 처리한다.",
+      "requirements": [
+        "네트워크 기초",
+        "관련 자격증"
+      ],
+      "preferred": [
+        "보안 장비 사용 경험"
+      ]
+    },
+    {
+      "id": "JOB-028",
+      "title": "DevOps 엔지니어(신입)",
+      "company": "하람테크웍스",
+      "category": "인프라·클라우드",
+      "region": "인천",
+      "employment_type": "계약직",
+      "career": "신입",
+      "education": "학력무관",
+      "posted": "2027-04-13",
+      "deadline": "2027-05-29",
+      "summary": "테스트와 배포를 자동화하는 워크플로를 만든다.",
+      "requirements": [
+        "Git 사용",
+        "리눅스 기초"
+      ],
+      "preferred": [
+        "GitHub Actions 사용 경험"
+      ]
+    },
+    {
+      "id": "JOB-029",
+      "title": "정보보안 관제 요원",
+      "company": "늘봄소프트",
+      "category": "인프라·클라우드",
+      "region": "경기",
+      "employment_type": "정규직",
+      "career": "경력무관",
+      "education": "전문학사 이상",
+      "posted": "2027-04-14",
+      "deadline": "2027-06-16",
+      "summary": "보안 이벤트를 모니터링하고 초기 대응을 한다.",
+      "requirements": [
+        "보안의 기초 이해",
+        "교대 근무 가능"
+      ],
+      "preferred": [
+        "정보보안 관련 자격증"
+      ]
+    },
+    {
+      "id": "JOB-030",
+      "title": "IT 헬프데스크",
+      "company": "가온정보기술",
+      "category": "인프라·클라우드",
+      "region": "서울",
+      "employment_type": "정규직",
+      "career": "신입",
+      "education": "전문학사 이상",
+      "posted": "2027-04-15",
+      "deadline": "2027-06-23",
+      "summary": "임직원의 PC와 계정 문제를 해결한다.",
+      "requirements": [
+        "PC 하드웨어·운영체제 기초",
+        "응대 능력"
+      ],
+      "preferred": [
+        "사내 시스템 운영 경험"
+      ]
+    }
+  ]
+}

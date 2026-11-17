@@ -1,0 +1,6 @@
+{"ts": "2027-06-01T01:00:00+00:00", "variant": "A", "purpose": "summarize", "ok": true, "fake": true, "input_tokens": 220, "output_tokens": 60, "latency_ms": 540}
+{"ts": "2027-06-01T01:00:05+00:00", "variant": "A", "purpose": "summarize", "ok": true, "fake": true, "input_tokens": 230, "output_tokens": 58, "latency_ms": 530}
+{"ts": "2027-06-01T01:01:00+00:00", "variant": "B", "purpose": "summarize", "ok": true, "fake": true, "input_tokens": 220, "output_tokens": 60, "latency_ms": 545}
+{"ts": "2027-06-01T01:01:03+00:00", "variant": "B", "purpose": "summarize", "ok": true, "fake": true, "input_tokens": 300, "output_tokens": 61, "latency_ms": 550}
+{"ts": "2027-06-01T01:01:06+00:00", "variant": "B", "purpose": "summarize", "ok": false, "fake": true, "input_tokens": 0, "output_tokens": 0, "latency_ms": 2}
+{"ts": "2027-06-01T01:01:09+00:00", "variant": "B", "purpose": "summarize", "ok": true, "fake": true, "input_tokens": 380, "output_tokens": 62, "latency_ms": 560}

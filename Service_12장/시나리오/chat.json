@@ -1,0 +1,13 @@
+{
+  "name": "chat",
+  "description": "대화형 과업: 초안을 붙여 넣고, 예시를 한 번 더 묻고, 고친 답변을 다시 보인다.",
+  "inputs": {"question": "지원 동기와 입사 후 포부를 쓰시오.", "limit": 700,
+             "answer_file": "답변_초안.txt", "answer_revised_file": "답변_수정.txt"},
+  "base_body": {"question": "{question}", "limit": "{limit}", "job_id": "JOB-001"},
+  "reply_field": "reply",
+  "steps": [
+    {"path": "/api/feedback/chat", "say": "{answer}"},
+    {"path": "/api/feedback/chat", "say": "보완점 첫째를 고친 예시 문장으로 보여 줘."},
+    {"path": "/api/feedback/chat", "say": "{answer_revised}\n\n위처럼 고쳤다. 다시 봐 줘."}
+  ]
+}

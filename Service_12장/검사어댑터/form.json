@@ -1,0 +1,7 @@
+{
+  "variant": "form",
+  "path": "/api/feedback",
+  "body": {"question": "{question}", "answer": "{answer}", "limit": "{limit}", "job_id": null},
+  "parts": {"mode": "fields", "fields": ["strengths", "improvements", "rewrite"]},
+  "over_limit": {"mode": "field", "field": "over_limit"}
+}

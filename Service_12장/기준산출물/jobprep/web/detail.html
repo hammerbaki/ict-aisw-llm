@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>공고 상세 | 취업 준비 지원</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/common.js" defer></script>
+  <script src="js/detail.js" defer></script>
+  <script src="js/summary.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <p class="site-name">취업 준비 지원</p>
+    <nav aria-label="주 메뉴">
+      <a href="index.html">채용 공고</a>
+      <a href="saved.html">관심 공고</a>
+      <a href="schedule.html">지원 일정</a>
+    </nav>
+  </header>
+  <main>
+    <p><a id="back-to-list" href="index.html">← 공고 목록으로</a></p>
+    <article id="job-detail" hidden>
+      <h1 id="job-title"></h1>
+      <p id="job-company" class="job-company"></p>
+      <p id="job-badges"></p>
+      <dl class="detail-grid">
+        <dt>직무 분야</dt><dd id="job-category"></dd>
+        <dt>지역</dt><dd id="job-region"></dd>
+        <dt>고용 형태</dt><dd id="job-employment"></dd>
+        <dt>경력</dt><dd id="job-career"></dd>
+        <dt>학력</dt><dd id="job-education"></dd>
+        <dt>마감일</dt><dd id="job-deadline"></dd>
+      </dl>
+      <h2>하는 일</h2>
+      <p id="job-summary"></p>
+      <h2>자격 요건</h2>
+      <ul id="job-requirements"></ul>
+      <h2>우대 사항</h2>
+      <ul id="job-preferred"></ul>
+      <p class="actions">
+        <button id="save-toggle" type="button" aria-pressed="false">관심 공고 저장</button>
+        <a id="add-schedule" class="button-link" href="schedule.html">지원 일정에 추가</a>
+      </p>
+      <p id="save-message" class="message" aria-live="polite"></p>
+      <!-- 10장: 요약 기능. 동작은 js/summary.js -->
+      <section class="summary-box" aria-labelledby="summary-heading">
+        <h2 id="summary-heading">AI 요약</h2>
+        <button id="summary-btn" type="button" disabled>요약 보기</button>
+        <p id="summary-status" role="status"></p>
+        <div id="summary"></div>
+      </section>
+    </article>
+    <section id="not-found" hidden>
+      <h1>찾을 수 없는 공고입니다</h1>
+      <p>주소의 공고 번호를 확인하거나 목록에서 다시 고르십시오.</p>
+      <p><a href="index.html">공고 목록으로 가기</a></p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>공고 자료는 수업을 위해 지어낸 것이다. 관심 공고와 지원 일정은 이 브라우저에만 저장된다.</p>
+  </footer>
+</body>
+</html>
