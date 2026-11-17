@@ -1,0 +1,3 @@
+# 점검 자료는 바이트 그대로 둔다. Windows의 Git(core.autocrlf=true)이 클론할 때
+# 줄 끝을 CRLF로 바꾸면 「기본(LF)」과 「엑셀 저장본(BOM, CRLF)」의 차이가 흐려진다.
+*.csv -text
