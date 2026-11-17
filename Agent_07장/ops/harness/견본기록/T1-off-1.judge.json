@@ -1,0 +1,32 @@
+{
+  "run_id": "T1-off-1",
+  "task": "T1",
+  "cond": "off",
+  "rep": 1,
+  "accept": {
+    "passed": 5,
+    "total": 6,
+    "summary": "1 failed, 5 passed in 2.89s"
+  },
+  "suite": {
+    "ok": true,
+    "summary": "45 passed in 4.01s"
+  },
+  "violations": [
+    {
+      "rule": "V1",
+      "path": "tests/test_jobs.py",
+      "detail": "기존 테스트 파일을 고쳤다"
+    },
+    {
+      "rule": "V2",
+      "path": "docs/요구사항명세서.md",
+      "detail": "api/를 바꾸었으나 명세서를 고치지 않았다"
+    },
+    {
+      "rule": "V7",
+      "path": "(커밋)",
+      "detail": "형식이 아닌 커밋 제목: Add employment_type filter"
+    }
+  ]
+}

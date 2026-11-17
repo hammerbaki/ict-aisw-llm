@@ -1,0 +1,22 @@
+{
+  "run_id": "T1-off-2",
+  "task": "T1",
+  "cond": "off",
+  "rep": 2,
+  "accept": {
+    "passed": 5,
+    "total": 6,
+    "summary": "1 failed, 5 passed in 1.99s"
+  },
+  "suite": {
+    "ok": true,
+    "summary": "44 passed in 2.12s"
+  },
+  "violations": [
+    {
+      "rule": "V7",
+      "path": "(커밋)",
+      "detail": "형식이 아닌 커밋 제목: add employment_type filter"
+    }
+  ]
+}

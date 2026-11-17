@@ -1,0 +1,28 @@
+{
+  "run_id": "T2-off-1",
+  "task": "T2",
+  "cond": "off",
+  "rep": 1,
+  "accept": {
+    "passed": 4,
+    "total": 10,
+    "summary": "보고서 4/10",
+    "items": {
+      "절 6개(요약·영향·경과·원인·조치·근거)": false,
+      "날짜 2027-09-11": true,
+      "경로 /api/ask": true,
+      "오류 AuthenticationError": true,
+      "실패 3건": true,
+      "첫 실패 16:05": false,
+      "마지막 실패 16:08": false,
+      "질의응답 첫 성공 19:03": false,
+      "원인에 추정 표시": false,
+      "기록 파일 근거 2종 이상": false
+    }
+  },
+  "suite": {
+    "ok": true,
+    "summary": "43 passed in 1.73s"
+  },
+  "violations": []
+}

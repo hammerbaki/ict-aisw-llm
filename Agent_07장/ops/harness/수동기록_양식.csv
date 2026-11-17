@@ -1,0 +1,7 @@
+run_id,interventions,duration_min,input_tokens,output_tokens,cache_read_tokens,cache_write_tokens,cost_usd,notes
+T1-off-1,0,,,,,,,
+T1-on-1,0,,,,,,,
+T2-off-1,0,,,,,,,
+T2-on-1,0,,,,,,,
+T3-off-1,0,,,,,,,
+T3-on-1,0,,,,,,,

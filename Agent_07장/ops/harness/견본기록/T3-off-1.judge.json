@@ -1,0 +1,32 @@
+{
+  "run_id": "T3-off-1",
+  "task": "T3",
+  "cond": "off",
+  "rep": 1,
+  "accept": {
+    "passed": 2,
+    "total": 3,
+    "summary": "1 failed, 2 passed in 2.36s"
+  },
+  "suite": {
+    "ok": true,
+    "summary": "44 passed in 2.37s"
+  },
+  "violations": [
+    {
+      "rule": "V5",
+      "path": "api/ask.py",
+      "detail": "기록 호출에 사용자 입력 변수: ask_log.info(\"question=%s q_len=%d sources=0 top_score=%.2f result=not_found\", q"
+    },
+    {
+      "rule": "V1",
+      "path": "tests/test_ask.py",
+      "detail": "기존 테스트 파일을 고쳤다"
+    },
+    {
+      "rule": "V2",
+      "path": "docs/요구사항명세서.md",
+      "detail": "api/를 바꾸었으나 명세서를 고치지 않았다"
+    }
+  ]
+}

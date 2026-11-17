@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "ask": ["Bash(python -m pip install *)"],
+    "deny": ["Bash(git push *)", "Read(./.env)"]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/protect.sh" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "cd \"$CLAUDE_PROJECT_DIR\" && python -m pytest -q || exit 2", "timeout": 120 }
+        ]
+      }
+    ]
+  }
+}

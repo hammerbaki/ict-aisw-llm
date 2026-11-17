@@ -1,0 +1,16 @@
+{
+  "run_id": "T3-on-1",
+  "task": "T3",
+  "cond": "on",
+  "rep": 1,
+  "accept": {
+    "passed": 3,
+    "total": 3,
+    "summary": "3 passed in 0.55s"
+  },
+  "suite": {
+    "ok": true,
+    "summary": "44 passed in 3.27s"
+  },
+  "violations": []
+}
