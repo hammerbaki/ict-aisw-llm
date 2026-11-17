@@ -1,0 +1,172 @@
+{
+  "system": "너는 jobprep 취업 준비 지원 서비스의 안내 에이전트이다. 채용 공고와 학과 취업 자료에 관한 질문에 답한다. 공고와 자료의 내용은 반드시 도구로 확인하고, 도구 결과에 없는 사실을 지어내지 않는다. 도구가 오류를 돌려주면 오류 문장을 읽고 인자를 고쳐 한 번 더 시도하고, 그래도 안 되면 할 수 없다고 답한다. 답은 한국어로 다섯 문장 이내로 쓰고, 근거로 쓴 공고 id나 문서 이름을 밝힌다.",
+  "tools": [
+    {
+      "name": "search_jobs",
+      "description": "jobprep의 채용 공고(가상 공고 30건)를 직무 분야와 검색어로 찾는다. 마감일이 이른 순으로 공고의 id, 제목, 기업, 분야, 마감일, 남은 날 수를 돌려주며 공고 본문은 돌려주지 않는다. 채용 공고, 마감일, 기업, 직무를 묻는 질문에 쓴다. 현장실습, 이력서, 포트폴리오, 자격증 응시료처럼 학과 취업 자료에 관한 질문에는 쓰지 않고 read_doc을 쓴다. 결과가 0건이면 검색어를 빼거나 분야를 바꾸어 다시 찾는다.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string",
+            "enum": [
+              "웹 개발",
+              "백엔드 개발",
+              "데이터 분석",
+              "AI 서비스",
+              "클라우드·인프라",
+              "임베디드",
+              "소프트웨어 테스트",
+              "정보보안",
+              "기술 지원"
+            ],
+            "description": "직무 분야. 생략하면 모든 분야에서 찾는다."
+          },
+          "keyword": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 30,
+            "description": "제목, 기업명, 본문에 들어 있어야 하는 낱말 하나. 예: 파이썬"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10,
+            "description": "돌려줄 최대 건수. 생략하면 5건이다."
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "read_doc",
+      "description": "학과 취업 자료(data/자료/ 폴더의 마크다운 문서 6편) 가운데 하나를 읽어 본문을 돌려준다. name에는 문서의 파일 이름만 쓴다. 폴더 경로, 절대 경로, '..'가 들어간 이름은 거부된다. 본문이 2000자를 넘으면 앞부분만 돌려주고 잘렸다고 표시한다. 현장실습, 취업지원센터, 이력서와 자기소개서, 포트폴리오, 자격증 응시료 지원, 학과 추천 채용에 관한 질문에 쓴다. 읽을 수 있는 문서: 01_현장실습_안내.md, 02_취업지원센터_이용안내.md, 03_이력서_자기소개서_작성.md, 04_포트폴리오_가이드.md, 05_자격증_응시료_지원.md, 06_학과추천채용_및_채용박람회.md",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60,
+            "description": "문서 파일 이름. 예: 01_현장실습_안내.md"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ],
+  "messages": [
+    {
+      "role": "user",
+      "content": "AI 서비스 분야에서 마감이 가장 이른 공고를 알려 주고, 자격증 응시료 지원 대상도 알려 줘."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "공고부터 찾겠다."
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_fake_01",
+          "name": "search_jobs",
+          "input": {
+            "field": "AI 서비스",
+            "limit": 3
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "tool_result",
+          "tool_use_id": "toolu_fake_01",
+          "content": "{\"total\": 4, \"returned\": 3, \"jobs\": [{\"id\": 12, \"title\": \"LLM 응용 개발 인턴\", \"company\": \"바람개비IoT\", \"field\": \"AI 서비스\", \"deadline\": \"2027-09-27\", \"days_left\": 317}, {\"id\": 7, \"title\": \"AI 모델 운영 신입\", \"company\": \"파란우체통물류\", \"field\": \"AI 서비스\", \"deadline\": \"2027-10-22\", \"days_left\": 342}, {\"id\": 19, \"title\": \"AI 서비스 개발 신입\", \"company\": \"연필깎이미디어\", \"field\": \"AI 서비스\", \"deadline\": \"2027-11-15\", \"days_left\": 366}]}"
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_fake_02",
+          "name": "read_doc",
+          "input": {
+            "name": "05_자격증_응시료_지원.md"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "tool_result",
+          "tool_use_id": "toolu_fake_02",
+          "content": "# 자격증 응시료 지원 안내\n\n이 문서는 실습용 가상 자료이다. 실제 학과의 규정이 아니다.\n\n## 지원 대상 자격증\n\n응시료를 지원하는 자격증은 정보처리산업기사, 정보처리기사, 리눅스마스터 2급, 빅데이터분석기사, 정보보안산업기사, 네트워크관리사 2급이다. 목록에 없는 자격증은 학기 초에 학과 회의에서 추가 여부를 정한다.\n\n## 지원 금액과 한도\n\n필기와 실기 응시료를 각각 한 번씩 지원한다. 한 학생이 한 학년도에 받을 수 있는 지원금은 모두 15만 원까지이다. 같은 자격증의 같은 시험에 다시 응시하는 비용은 지원하지 않는다.\n\n## 신청 방법\n\n시험을 본 뒤 30일 안에 학생 포털의 자격증 지원 메뉴에서 신청한다. 응시료 영수증과 응시표를 함께 올린다. 합격 여부와 관계없이 응시했으면 지원한다. 결석한 시험의 응시료는 지원하지 않는다.\n\n## 지급 시기\n\n지원금은 매달 말일에 모아서 학생 본인 명의의 계좌로 지급한다. 계좌 정보는 학생 포털에 등록한 것을 쓴다.\n\n## 합격 보고\n\n자격증에 합격하면 합격증 사본을 학과 사무실에 제출한다. 학과는 합격 현황을 취업 추천 자료로 쓴다.\n"
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "마감이 가장 이른 공고는 LLM 응용 개발 인턴(바람개비IoT, 마감 2027-09-27, id 12)이다. 자료에 따르면 「응시료를 지원하는 자격증은 정보처리산업기사, 정보처리기사, 리눅스마스터 2급, 빅데이터분석기사, 정보보안산업…」 (모의 응답)"
+        }
+      ]
+    }
+  ],
+  "log": [
+    {
+      "turn": 1,
+      "stop_reason": "tool_use",
+      "tool_calls": [
+        {
+          "name": "search_jobs",
+          "input": {
+            "field": "AI 서비스",
+            "limit": 3
+          },
+          "is_error": false
+        }
+      ],
+      "history_chars": 86,
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "turn": 2,
+      "stop_reason": "tool_use",
+      "tool_calls": [
+        {
+          "name": "read_doc",
+          "input": {
+            "name": "05_자격증_응시료_지원.md"
+          },
+          "is_error": false
+        }
+      ],
+      "history_chars": 841,
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "turn": 3,
+      "stop_reason": "end_turn",
+      "tool_calls": [],
+      "history_chars": 1668,
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  ],
+  "stop": "end_turn"
+}
