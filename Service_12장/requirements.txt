@@ -1,9 +1,3 @@
-# 12장 키트. 도구의 검사가 기준 산출물(11장 완성판)의 앱을 불러 오므로 그 requirements.txt와 같은 판을 고정한다(2026-11-14 설치·검사)
-anthropic==2.8.0
-fastapi==0.162.7
-uvicorn==0.54.0
-httpx==0.28.1
-pydantic==2.14.3
-python-dotenv==1.2.4
+# 12장 키트. 점검표 집계 도구는 표준 라이브러리만 쓴다. 테스트에 pytest가 필요하다.
+# 부록 A-13의 가상 환경을 켠 뒤 python -m pip install -r requirements.txt 로 설치한다.
 pytest==9.2.0
-numpy==2.5.4

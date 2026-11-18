@@ -1,0 +1,8 @@
+# 비밀 정보
+.env
+# 파이썬 실행 부산물
+.venv/
+__pycache__/
+.pytest_cache/
+# 다시 만들 수 있는 색인(python -m rag index)
+rag/index/

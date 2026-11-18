@@ -1,9 +1,5 @@
-# 11장 키트. 10장의 requirements.txt에 numpy를 더한 것이다. 버전은 2026-11-14에 설치해 테스트한 값으로 고정한다
-anthropic==2.8.0
-fastapi==0.162.7
-uvicorn==0.54.0
-httpx==0.28.1
-pydantic==2.14.3
-python-dotenv==1.2.4
+# 11장 키트. 대비 계산기, HTML 점검기, 토큰 변환기는 표준 라이브러리만 쓴다.
+# 테스트에 pytest, 선택 도구 keyboard_walk.py에 playwright가 필요하다.
+# 부록 A-13의 가상 환경 ~/llm-service-lab/.venv 를 켠 뒤 python -m pip install -r requirements.txt 로 설치한다.
 pytest==9.2.0
-numpy==2.5.4
+playwright==1.64.0

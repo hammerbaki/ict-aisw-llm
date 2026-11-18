@@ -1,55 +1,72 @@
-# Service_10장: LLM 기능의 통합 키트
+# Service_10장 키트: 검색 증강 생성(RAG)
 
-「LLM 서비스 개발」 10장(학사 12주차)의 실습 재료이다. 공고 요약 API(FastAPI)를 만들어 9장의 웹에 붙이고, 프롬프트 판본 세 개를 평가 문항 10개로 비교해 하나를 채택한다. 모든 코드는 모의 모드(`LLM_FAKE=1`)에서 키 없이 끝까지 돈다.
+「LLM 서비스 개발」 10장(학사 12주차, 서비스 4 「문서 요약과 질의응답」의 2/2)의 실습 재료다. 가상 문서 다섯 개를 근거로 답하는 질의응답(`python -m rag`)을 완성하고, 평가 문항 10개로 검색의 재현율@3을 잰다. 9장의 결과가 없어도 시작할 수 있다. API와 화면에는 붙이지 않는다.
 
 ## 들어 있는 것
 
-| 경로 | 내용 |
-|---|---|
-| `jobprep/api/` | 요약 API. `app.py`(FastAPI), `llm.py`(호출을 한 곳에 모음, 모의 모드), `schema.py`(요약 형식), `prompts.py`(판본 파일 읽기), `fake.py`(모의 요약기) |
-| `jobprep/prompts/` | 프롬프트 판본 `v1.md`(기준선), `v2.md`(규칙과 형식), `v3.md`(v2 + 예시 두 건) |
-| `jobprep/eval/` | 평가 문항(가상 공고 10건 `공고/`, 정답 `정답.json`), 채점기 `grader.py`, 판본 비교 실행기 `run_compare.py`, 모의 응답 `모의응답/` |
-| `jobprep/tools/` | `first_call.py`(요청 한 번의 구조 보기), `count_tokens.py`(토큰 세기), `cost_estimate.py`(월 비용 어림), `check_secrets.py`(키 노출 검사) |
-| `jobprep/tests/` | pytest 테스트 42개. 모의 모드에서 모두 통과한다 |
-| `jobprep/docs/프롬프트비교_양식.md` | 판본 비교 기록의 양식 |
-| `jobprep/.env.example`, `.gitignore`, `requirements.txt`, `pytest.ini` | 설정 견본, 커밋 제외 목록, 고정 버전 |
-| `기준산출물/jobprep/web/` | 9장 키트의 정답 웹(`Service_09장/교수/web/`, 2026-11-14 복사)에 상세 화면의 「AI 요약」 영역(`#summary-btn`, `#summary-status`, `#summary`)만 더한 것. 9장 결과가 없을 때만 쓴다 |
-| `교수/` | 정답 `web/js/summary.js`와 `web/detail.html`, 판본 비교 기록 예시, 시연 순서, 교수 시연의 실행 기록을 만드는 `make_run_record.py`. 학생용 키트 저장소에 넣지 않는다 |
+| 경로 | 내용 | 학생이 고치는가 | 쓰는 절 |
+|---|---|---|---|
+| `ch10/rag/` | 색인, 검색, 답변, 측정 코드. 네 함수(`vector_search`, `recall_at_k`, `build_prompt`, `trim_history`)가 TODO다 | TODO 네 함수만 | 1~8절 |
+| `ch10/rag/평가문항.csv` | 평가 문항 10개와 정답 절 | 고치지 않는다 | 8-5 |
+| `ch10/rag/범위밖문항.csv` | 자료에 없는 질문 3개(기준값 정하기용) | 고치지 않는다 | 8-6 |
+| `ch10/자료/` | 가상 문서 다섯 개(취업 지원 안내, 자기소개서 작성 가이드, 면접 준비 안내, 현장실습 운영 규정, 채용 공고 발췌) | 고치지 않는다 | 3-3 |
+| `ch10/tests/rag/` | 고정 테스트 24개(대체 임베딩, 모의 LLM으로 돈다) | 고치지 않는다 | 0-2, 8-4 |
+| `ch10/docs/요구사항명세서_양식.md` | 서비스 4의 질의응답 요구(EARS) 11개 | 복사해 「 」를 채운다 | 8-2 |
+| `ch10/docs/검색평가_양식.md` | 검색 평가 보고 양식 | `검색평가.md`로 복사해 채운다 | 8-5~8-9 |
+| `ch10/.env.example`, `.gitignore`, `requirements.txt`, `pytest.ini` | 설정 견본(값 없음), 제외 목록(`.env`, `rag/index/`), 고정 판, 테스트 설정 | | 0-2 |
+| `시연기록/` | 교수 시연의 실행 기록(Ollama 임베딩 경로, 실제 모델의 답)이 올라올 자리. 지금은 안내 파일만 있다 | 읽기만 한다 | 2-3, 8-6 |
+| `교수/` | 완성판 `rag/`, 검색평가 예시 답안, 시연 지시, 실행 기록을 만드는 `시연기록_만들기.sh`와 그 점검 결과, 숨은 지시가 든 가상 공고(`자료_실험/`). 학생용 키트 저장소에 넣지 않는다 | | |
 
-## 쓰는 순서 (내 PC. 자세한 설명은 학생용 강의안 0절과 11절)
+## 쓰는 순서 (내 PC. 자세한 설명은 학생용 강의안 0절과 8절)
 
-가상 환경을 켠 터미널(Windows Git Bash `source ~/llm-service-lab/.venv/Scripts/activate`, macOS `source ~/llm-service-lab/.venv/bin/activate`)을 전제로 한다(부록 A-13). 가상 환경이 아직 없으면 저장소 맨 위에서 `python -m venv .venv`로 만든 뒤 켠다.
+가상 환경을 켠 터미널을 전제로 한다(부록 A-13). Windows에서는 `PYTHONUTF8=1`을 등록해 둔다(부록 A-3-4).
 
 ```bash
-git -C ~/kits-repo pull && mkdir -p ~/kits && cp -rn ~/kits-repo/Service_10장 ~/kits/   # 키트 받기(부록 A-12-3)
+git -C ~/kits-repo pull && cp -rn ~/kits-repo/Service_10장 ~/kits/   # 키트 받기(부록 A-12-3)
 cd ~/llm-service-lab
-ls jobprep/web || cp -rn ~/kits/Service_10장/기준산출물/jobprep/web jobprep/   # 9장 웹이 없을 때만
-cp -rn ~/kits/Service_10장/jobprep/. jobprep/            # 키트를 jobprep에 합친다(있는 파일은 덮지 않는다)
-python -m pip install -r jobprep/requirements.txt
-cd jobprep
-cp -n .env.example .env                                    # LLM_FAKE=1 상태로 시작
-python -m pytest                                           # 42 passed
-python -m eval.run_compare v1 v2 v3                        # 판본 비교(모의 응답 재생) → results/비교표.md
-python -m uvicorn api.app:app --port 8000                  # http://localhost:8000/detail.html?id=JOB-003
-python tools/check_secrets.py                              # KEY_CHECK_OK
+cp -rn ~/kits/Service_10장/ch10 .
+cd ch10
+python -m pip install -r requirements.txt
+cp -n .env.example .env          # LLM_FAKE=1
+python -m pytest tests/rag       # 처음에는 16 failed, 8 passed가 정상이다
+python -m rag index              # 청크 36개(대체 임베딩)
 ```
 
-`.env`가 이미 있는 9장 이후의 폴더에서는 `cp -n`이 덮어쓰지 않는다. 그때는 `.env.example`의 변수(`LLM_FAKE`, `LLM_MODEL`, `LLM_EFFORT`, `PROMPT_VERSION`, `RATE_LIMIT_PER_MIN`)가 `.env`에 있는지 확인한다.
+네 함수를 완성하면 `tests/rag`가 `24 passed`가 된다. `tests/` 아래 파일은 고치지 않는다.
 
-포트는 API 8000, 웹 8100으로 고정한다(부록 A-16). API 서버가 `web/`을 같은 출처(`http://localhost:8000/`)에서 함께 보내므로 웹을 따로 띄우지 않는다. 웹을 `python -m http.server 8100`으로 따로 띄우면 상대 주소 `/api/summary`가 8100으로 가서 501이 된다(학생용 11-6, 핵심 실습의 해결 과제). `WEB_ORIGIN`(기본 `http://localhost:8100`)은 웹을 다른 출처에서 열어 API의 전체 주소로 부를 때만 쓰인다.
+## 환경 변수
 
-Windows의 Git Bash에서 파이썬 출력을 `|`로 다른 명령에 넘기면 한글이 깨질 수 있다. 그때는 명령 앞에 `PYTHONUTF8=1`을 붙인다(부록 A).
+| 이름 | 기본값 | 뜻 |
+|---|---|---|
+| `EMBED_BACKEND` | `fallback` | `fallback`은 글자 n-gram 대체 구현이다. 누가 실행해도 같은 벡터가 나온다. `ollama`는 내 PC의 Ollama(선택, 부록 A-17)를 쓰고 연결할 수 없으면 오류를 낸다. `auto`는 Ollama를 먼저 시도한다(측정에는 쓰지 않는다) |
+| `EMBED_MODEL` | `nomic-embed-text` | Ollama 임베딩 모델 이름 |
+| `OLLAMA_URL` | `http://localhost:11434` | Ollama 주소 |
+| `CHUNK_MODE` | `heading` | `heading`(제목 단위) 또는 `size`(고정 길이) |
+| `CHUNK_MAX_CHARS` | `500` | 청크 길이의 상한(글자) |
+| `CHUNK_OVERLAP` | `0` | 겹치는 글자 수 |
+| `CHUNK_ADD_TITLE` | `1` | 1이면 청크 앞에 「문서 제목 > 절 제목」을 붙여 임베딩 |
+| `TOP_K` | `3` | 근거로 쓸 청크 수 |
+| `SEARCH_METHOD` | `vector` | `vector`, `keyword`, `hybrid` |
+| `RAG_MIN_SCORE` | 대체 0.18, Ollama 0.50 | 1위 유사도가 이보다 낮으면 「자료에 없다」. Ollama 값은 자리만 잡은 값이다. 청킹 설정을 바꾸면 `calibrate`로 다시 정한다 |
+| `MAX_TURNS` | `4` | LLM에 보낼 최근 왕복 수 |
+| `LLM_FAKE` | `.env`의 `1` | `1`이면 API를 부르지 않는 모의 모드 |
+| `LLM_MODEL` | `.env`의 `claude-haiku-5-5` | 실제 호출에 쓸 모델 이름. 코드에 적지 않는다 |
 
-## 모의 모드와 실제 호출
+## 자료를 바꿀 때
 
-- `LLM_FAKE=1`(기본): API를 부르지 않는다. 요약 API는 공고의 칸을 규칙으로 옮긴 모의 요약을 내고, 판본 비교는 `eval/모의응답/`에 미리 적어 둔 응답을 재생한다. 모의 응답은 수업용으로 만든 예시이며 실제 모델의 출력이 아니다.
-- `LLM_FAKE=0`: `.env`에 키(`ANTHROPIC_API_KEY`)를 넣은 뒤에만 쓴다. 키는 선택이다(사용자 결정 11, 2026-11-16). 직접 실제 호출을 해 볼 학생만 각자 Claude Console에서 발급하고(부록 A-14), 이 장의 실행 상한(`tools/first_call.py` 1회)만 실제로 부른다. 판본 비교의 실제 측정(호출 90회)은 교수 시연으로 하고, 학생은 교수가 키트 저장소에 올리는 실행 기록(`Service_10장_실행기록/`)으로 읽는다. 모델은 `LLM_MODEL`(기본 `claude-haiku-5-5`, 2026-11 기준)로 정한다. 실제 호출은 집필 시점에 키가 없어 실행해 보지 못했고, SDK 2.8.0의 시그니처와 공식 문서로 대조하였다.
+서비스 4의 자료를 공개 API로 받은 문서(후보: 고용24 직업정보)로 바꾸면 고칠 곳은 다음과 같다(2026-11-18, 바꾸지 않음).
 
-## 교수 전용 폴더
+| 고칠 곳 | 내용 |
+|---|---|
+| `자료/*.md` | 받은 문서를 마크다운으로 바꾼 것(절 제목 `##`이 청킹의 경계가 된다) |
+| `rag/평가문항.csv`, `rag/범위밖문항.csv` | 새 질문과 정답 절(`문서이름#절 제목`) |
+| `rag/config.py`의 `NO_ANSWER`, `DEFAULT_MIN_SCORE` | 거절 문장(취업지원실 안내)과 `calibrate`로 다시 잰 기준값 |
+| `tests/rag/test_rag_search.py`, `test_rag_eval.py`, `test_rag_answer.py` | 키트 자료에 기대는 테스트(1위 절, 재현율, 거절 문장) |
+| `docs/요구사항명세서_양식.md` | 서비스 설명과 자료의 줄 |
+| `교수/시연기록_만들기.sh`, `교수/정답_검색평가.md` | 질문 문장과 예시 답안 |
 
-`교수/`(정답 `web/js/summary.js`와 `web/detail.html`, 판본 비교 기록 예시, 시연 순서, 실행 기록을 만드는 `make_run_record.py`)는 학생용 키트 저장소에 넣지 않는다. 키트의 테스트는 `교수/`를 읽지 않으므로 `교수/`가 없어도 42개가 모두 돈다.
+## 확인한 것과 확인하지 못한 것
 
-## 확인한 환경
-
-- 2026-11-14: Windows 11, Python 3.13.7, 위 `requirements.txt`의 버전. `pytest` 42 passed, 판본 비교(모의) v1 17/50, v2 42/50, v3 49/50.
-- 2026-11-17(결정 11 개편): Windows 11 Git Bash, Python 3.13.7. 키트 저장소를 클론해(줄 끝 CRLF로 꺼내짐) 받는 흐름, 가상 환경 켜기, `pytest`, 판본 비교, uvicorn 8000, `http.server` 8100의 501과 같은 출처 해결을 다시 실행하였다.
+- 확인(2026-11-18): Windows 11 빌드 26300, Git Bash, Python 3.13.7, 위 `requirements.txt`의 판(새 가상 환경). `교수/`를 뺀 키트를 복사해 받는 흐름, 학생판 `16 failed, 8 passed`, 완성판 세 파일을 넣은 뒤 `24 passed`와 `diff -r -x __pycache__`, `python -m rag index·search·prompt·ask·eval·calibrate`, 고정 길이 200자의 회귀(4번 문항)와 `CHUNK_OVERLAP=50`의 해결, `.gitignore`의 `rag/index/`, `교수/시연기록_만들기.sh`(`EMBED_BACKEND=fallback`, 모의 모드, 약 82초. 끝난 뒤 `자료/`가 다섯 개로 돌아오고 기본 색인이 다시 만들어짐).
+- 자료 머리말의 장 번호를 옛 번호에서 새 번호(10장)로 고쳤다. 대체 임베딩의 값이 조금 바뀌었다(예: 고정 길이 200자에서 면접 안내 머리말의 유사도 0.3041 → 0.3070, 겹침 50에서 4번 문항의 1위가 「비대면 면접 환경」에서 「머리말」로 바뀌고 2·3위가 그 절). 재현율, 기준값 후보, 회귀와 해결의 결론은 같다.
+- 확인하지 못함: Ollama 임베딩 경로(집필 PC에 Ollama가 없다), 실제 LLM API 호출(`LLM_FAKE=0`), Claude Code가 네 함수를 구현하는 대화, macOS에서의 실행.

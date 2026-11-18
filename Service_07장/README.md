@@ -1,72 +1,58 @@
-# 7장 실습 키트: 사용자 경험 설계 (사용자 여정과 정보 구조)
+# 7장 실습 키트: 사용자 조사와 문제 정의
 
-「LLM 서비스 개발」 7장(학사 9주차)의 실습 재료이다. 강의안 `Service_07장_학생용.md`의 0절에서 받는다.
-
-## 받는 법
+「LLM 서비스 개발」 7장(학사 9주차, 서비스 3: 예약·일정 웹앱의 첫 장)의 실습 재료이다. 강의안 `Service_07장_학생용.md`의 0절에서 키트 저장소(`~/kits-repo`, 부록 A-12)로부터 이 폴더를 `~/kits/Service_07장/`로 받고, 양식을 개인 실습 저장소의 `ch07/`로 복사해 쓴다. 키트 폴더 자체는 저장소에 넣지 않는다.
 
 ```bash
-git -C ~/kits-repo pull
-mkdir -p ~/kits
-cp -rn ~/kits-repo/Service_07장 ~/kits/
-ls ~/kits/Service_07장
+git -C ~/kits-repo pull && cp -rn ~/kits-repo/Service_07장 ~/kits/
 ```
 
-`~/kits-repo`는 1주차에 한 번 클론해 둔 수업용 키트 저장소이다(부록 A-12-2). 장마다 `git pull`로 새 키트를 받고, 이 장의 폴더를 저장소 밖의 `~/kits/`로 복사한 뒤, 이 장에서 필요한 파일만 개인 실습 저장소로 복사한다(강의안 0절, 부록 A-12-3). `cp -rn`은 이미 있는 파일을 덮어쓰지 않는다. `~/kits`가 없을 때 `mkdir -p` 없이 복사하면 `~/kits` 자체가 키트 폴더가 되므로 먼저 폴더를 만든다.
+## 들어 있는 것
 
-## 들어 있는 것과 쓰는 순서
+| 경로 | 무엇인가 | 쓰는 절 |
+|---|---|---|
+| `기록/논의_01.md`, `논의_02.md` | 졸업 프로젝트 조원의 프로덕트 논의 기록. **지어낸 수업용 예시**이다 | 1-7, 4-2~4-3 |
+| `인터뷰가이드_양식.md` | 질문 다섯 개와 AI의 지적에 대한 내 판단을 적는 양식 | 4-2 → `ch07/인터뷰가이드.md` |
+| `페르소나_양식.md` | 페르소나 한 명(PS-1)의 양식 | 4-3 → `ch07/페르소나.md` |
+| `문제정의_양식.md` | 문제 정의 둘(P-01, P-02)의 양식 | 4-3 → `ch07/문제정의.md` |
+| `기록_양식.md`, `동의문구_견본.md` | 졸업 프로젝트에서 조원과 논의할 때 쓰는 기록 양식과 동의 문구 | 1-5, 1-7 |
+| `설문_예시.md` | 주변 사람에게 돌리는 설문 예시(문항 일곱과 근거 줄) | 1-7, 4-6 → `ch07/설문.md` |
+| `설문_만들기.gs` | 설문을 Google 설문지로 만드는 Apps Script 코드 | 4-6 (선택) |
+| `연습/잘못된_페르소나.md` | 문제를 일부러 섞은 페르소나 초안 | 2-5 따라 하기 |
+| `tools/number_lines.py` | 기록에 줄 번호(L1, L2, ...)를 붙인다. `--check`는 고치지 않고 형식만 본다 | 1-8, 4-2 |
+| `tools/check_pii.py` | 기록에 남은 식별 정보(전화번호, 이메일, 이름 목록 등)를 찾는다 | 1-8, 4-2 |
+| `tools/check_trace.py` | 페르소나와 문제 정의의 인용 `[논의_01:L12]`이 실제 기록의 줄을 가리키는지 검사하고 대조표를 만든다 | 2-5, 4-3 |
+| `tools/recordfmt.py` | 위 세 도구가 함께 쓰는 기록 형식 모듈(직접 실행하지 않는다) | |
+| `tests/` | 도구와 키트 견본의 테스트(pytest) | 교수의 수업 전 점검 |
 
-| 순서 | 파일 | 쓰는 절 | 하는 일 |
-|---|---|---|---|
-| 0 | `기준산출물/` | 0절 | 6장의 명세서 v1이나 5장의 페르소나가 없을 때 복사해 쓴다 |
-| 1 | `여정지도_양식.md` | 10절 | `jobprep/docs/설계/여정지도.md`로 복사해 채운다 |
-| 2 | `카드목록.md` | 6절 [선택] | 카드 26장과 진행 순서, 지시문. 짝 활동(개방형 카드 소팅)에 쓴다 |
-| 3 | `카드소팅기록_양식.md` | 6절 [선택] | 저장소의 `ch07/카드소팅/기록_짝.md`로 복사해 기록한다 |
-| 4 | `견본/정보구조_견본.md` | 10절 | 사이트맵 골격. `jobprep/docs/설계/정보구조.md`로 복사해 고친다 |
-| 5 | `견본/사용자흐름_견본.md` | 7절(따라 하기 1), 10절 | 흐름 표기 견본(FLOW-00)과 FLOW-01·02의 빈칸 |
-| 6 | `견본/명세서v2_추가절_견본.md` | 8절, 10절 | 명세서에 붙일 「화면 목록」과 「사용자 흐름」 절 |
-| 7 | `check_design.py` | 8절(따라 하기 2), 10절 | 화면 ID와 요구 ID의 연결, 여정 지도의 근거 표시를 검사한다 |
-| 8 | `리뷰점검표_양식.md` | 9절, 10절 | 풀 리퀘스트를 리뷰할 때 쓴다 |
-| - | `tests/` | 8절 [선택] | `check_design.py`의 테스트 |
+도구는 파이썬 표준 라이브러리만 쓴다. 가상 환경을 켠 터미널(부록 A-13)에서 `python`으로 부른다. Windows의 Git Bash에는 `python3`이 없다. 도구가 쓰는 파일(번호를 붙인 기록, 대조표)은 Windows에서도 줄 끝이 LF이다.
 
-## 연결 검사
+## 실행 예
 
 ```bash
-cd ~/llm-service-lab
-python ~/kits/Service_07장/check_design.py jobprep/docs
+K=~/kits/Service_07장
+python $K/tools/number_lines.py ch07/기록/논의_01.md --check
+python $K/tools/check_pii.py ch07/기록
+python $K/tools/check_trace.py ch07/페르소나.md ch07/문제정의.md --records ch07/기록 --report ch07/대조표.md
 ```
 
-통과하면 마지막 줄이 `결과: 통과`이다. 오류가 있으면 `오류`로 시작하는 줄이 나오고 종료 코드가 1이다. 경고는 종료 코드를 바꾸지 않는다(`--strict`를 주면 경고도 실패로 친다). 출력은 UTF-8로 내보내므로 Windows의 Git Bash에서 `| grep`, `| tail`로 넘겨도 한글이 깨지지 않는다.
+`check_trace.py`는 실패(없는 파일·줄, 틀린 형식)나 누락(근거 표기가 없는 주장 줄)이 있으면 종료 코드 1이다. 경고(질문이나 메모를 인용, 6줄 이상의 범위)는 통과를 막지 않는다. 이 검사는 「인용한 줄이 있는가」만 본다. 「그 줄이 주장을 뒷받침하는가」는 사람이 대조표를 읽고 판정한다.
 
-`check_design.py`는 파이썬 표준 라이브러리만 쓴다. 가상 환경을 켜지 않아도 `python`으로 실행된다(Windows의 Git Bash에는 `python3`이 없으므로 `python`으로 쓴다). 테스트를 돌릴 때만 pytest가 필요하다. 과목 공통의 가상 환경(부록 A-13)을 켠 터미널에서 실행한다.
+## 실행 확인의 기록 (2026-11-18)
 
-```bash
-source ~/llm-service-lab/.venv/Scripts/activate   # macOS는 .venv/bin/activate
-cd ~/kits/Service_07장
-python -m pip install -r requirements.txt
-python -m pytest -q -p no:cacheprovider
-```
+집필용 PC(Windows 11, Git Bash, Python 3.13.7, pytest 9.2.0)에서 실행하였다.
 
-마지막 줄이 `18 passed`이면 된다. `-p no:cacheprovider`는 키트 폴더에 `.pytest_cache`를 남기지 않게 한다. 테스트는 `교수/` 폴더를 읽지 않으므로 학생 키트와 교수 사본에서 결과가 같다. 저장소 맨 위의 `.gitignore`가 `.venv/`를 무시하는지 커밋 전에 확인한다.
-
-## 기준 산출물
-
-| 파일 | 내용 |
+| 명령 | 결과 |
 |---|---|
-| `기준산출물/ch05/페르소나.md`, `문제정의.md`, `친화도.md` | 5장의 견본. 페르소나 PS-1 서지후, PS-2 임하람과 문제 정의 P-01~P-03. 5장 키트의 `교수/견본_*.md`를 복사한 것이며 가상 인물이다 |
-| `기준산출물/ch05/기록/인터뷰_예시_01~04.md` | 5장의 수업용 예시 기록(가상). 견본의 인용 `[인터뷰_예시_01:L12]`가 이 기록의 줄 꼬리표를 가리킨다 |
-| `기준산출물/jobprep/` | 6장의 견본. 명세서 v1.0(REQ-001~023, 공통 품질 요구 REQ-022·023), 추적표, `CLAUDE.md`. 6장 키트의 `교수/jobprep_예시/`를 복사한 것이다 |
+| `python -m pytest -q -p no:cacheprovider` (교수 폴더 포함) | 39 passed |
+| 같은 명령, 교수 폴더를 뺀 학생 배포본 | 38 passed, 1 skipped |
+| `python tools/number_lines.py 기록/논의_0N.md --check` | 두 파일 모두 「번호 붙은 줄 12개, 번호 없는 줄 없음」 |
+| `python tools/check_pii.py 기록` | 실패 0, 경고 0 |
+| `python tools/check_trace.py 연습/잘못된_페르소나.md --records 기록` | 결과: 불통과 (실패 2, 누락 1, 경고 3) |
 
-자기 산출물이 있으면 자기 것을 쓴다. 없을 때만 복사한다.
+`-p no:cacheprovider`는 키트 폴더에 `.pytest_cache`를 남기지 않게 한다. 강의안 1-8, 2-5, 4-2, 4-3의 출력은 같은 PC에서 시험용 홈 폴더와 저장소로 얻었다. `설문_만들기.gs`는 Google 계정이 필요하여 실행하지 않았다.
 
-```bash
-cd ~/llm-service-lab
-mkdir -p ch05/기록 jobprep/docs
-cp -n ~/kits/Service_07장/기준산출물/ch05/*.md ch05/
-cp -n ~/kits/Service_07장/기준산출물/ch05/기록/*.md ch05/기록/
-cp -n ~/kits/Service_07장/기준산출물/jobprep/CLAUDE.md jobprep/
-cp -n ~/kits/Service_07장/기준산출물/jobprep/docs/*.md jobprep/docs/
-```
+## 개인 정보에 대하여
 
-## mermaid 그림 확인
-
-내 PC의 VS Code 1.121 이상은 마크다운 미리 보기(`Ctrl+Shift+V`)에서 mermaid 그림을 그린다. 그 아래 판이면 확장 「Markdown Preview Mermaid Support」를 설치하거나 Mermaid Live Editor(<https://mermaid.live>)에 블록 내용을 붙여 확인한다. GitHub는 풀 리퀘스트와 저장소의 마크다운에서 그림을 그린다.
+- `ch07/기록/`에는 비식별 기록만 둔다. 이름, 연락처, 학번을 적지 않는다.
+- `check_pii.py --names`에 쓰는 이름 목록은 저장소 밖(홈 폴더)에 두고 커밋하지 않는다. 이름을 `echo`로 넣지 않는다(명령 기록에 남는다).
+- `기록/`의 두 기록은 지어낸 것이다. 이것으로 만든 페르소나와 문제 정의에는 연습용이라고 적는다.

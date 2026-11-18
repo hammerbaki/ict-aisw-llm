@@ -1,56 +1,58 @@
-# Service_09장 키트: 웹 프로덕트의 구현과 배포
+# Service_09장: LLM 기능의 설계와 API 연동 키트
 
-「LLM 서비스 개발」 9장(학사 11주차)의 실습 재료다. 명세서와 화면 명세에서 공고 모아보기·관심 공고·지원 일정 관리 웹(`jobprep/web/`)을 구현하고, 인수 조건으로 검사하고, GitHub Pages에 배포한 뒤, 명세 변경 한 건을 반영해 다시 배포한다.
+「LLM 서비스 개발」 9장(학사 11주차, 서비스 4 「문서 요약과 질의응답」의 1/2)의 실습 재료이다. 공고 요약 API(FastAPI)를 띄우고, 프롬프트 판본 세 개를 평가 문항 10개로 비교해 하나를 채택한다. 모든 코드는 모의 모드(`LLM_FAKE=1`)에서 키 없이 끝까지 돈다. 앞 장의 산출물이 없어도 시작할 수 있다.
 
 ## 들어 있는 것
 
-| 경로 | 내용 | 어디로 가는가 (`~/llm-service-lab/` 기준) |
+| 경로 | 내용 | 쓰는 절 |
 |---|---|---|
-| `README.md` | 이 안내 | |
-| `작업목록_양식.md` | 계획을 작업 목록으로 옮기는 양식 | `jobprep/docs/작업목록.md` |
-| `인수조건_양식.md` | 인수 조건 표(Given-When-Then)의 양식 | `jobprep/docs/인수조건.md` |
-| `배포기록_양식.md` | 배포 주소와 배포 이력의 양식 | `jobprep/docs/배포기록.md` |
-| `화면명세_검사용식별자.md` | 화면 명세에 붙이는 「검사용 약속」 절 | `jobprep/docs/설계/화면명세.md`의 맨 뒤 |
-| `변경요청_CR-01.md` | 핵심 실습 8단계의 명세 변경 요청(관심 공고의 마감순 정렬, REQ-040, `spec-v4`) | 읽기만 한다 |
-| `CLAUDE_웹구현규칙.md` | `jobprep/CLAUDE.md`에 더하는 「웹 구현 규칙」 절 | `jobprep/CLAUDE.md`의 맨 뒤 |
-| `시작/` | 공고 자료 30건(`data/jobs.json`), 디자인 토큰 CSS(8장 토큰 + 9장 구현의 별칭), 자동 검사(`check/`) | `jobprep/web/` |
-| `도구/predeploy.py` | 배포 전 점검과 공개 폴더(`_site`) 만들기 | `jobprep/tools/predeploy.py` |
-| `배포/.github/workflows/pages.yml` | GitHub Pages 배포 워크플로 견본 | `.github/workflows/pages.yml` (저장소 맨 위) |
-| `배포/gitignore_추가.txt` | `.gitignore`에 더할 줄 | `.gitignore` |
-| `기준산출물/jobprep/` | 8장 정답(`Service_08장/교수/정답/`)과 7장 정본을 복사한 견본: 명세서 v3(REQ-001~039)과 추적표, 설계 문서(화면 명세 v3 SCR-01~04, 디자인 토큰, 접근성 점검, 정보 구조, 사용자 흐름, 여정 지도), 프로토타입(index, job, schedule, schedule-new), CLAUDE.md | 앞 장 산출물이 없을 때만 `jobprep/` |
-| `교수/` | 정답과 시연 재료. 학생용 키트 저장소에는 들어 있지 않다 | |
+| `ch09/api/` | 요약 API. `app.py`(FastAPI), `llm.py`(호출을 한 곳에 모음, 모의 모드), `schema.py`(요약 형식), `prompts.py`(판본 파일 읽기), `fake.py`(모의 요약기) | 1, 2, 5, 8절 |
+| `ch09/prompts/` | 프롬프트 판본 `v1.md`(기준선), `v2.md`(규칙과 형식), `v3.md`(v2 + 예시 두 건) | 6절 |
+| `ch09/eval/` | 평가 문항(가상 공고 10건 `공고/`, 정답 `정답.json`), 채점기 `grader.py`, 판본 비교 실행기 `run_compare.py`, 모의 응답 `모의응답/` | 4, 7, 11절 |
+| `ch09/tools/` | `first_call.py`(요청 한 번의 구조 보기), `count_tokens.py`(토큰 세기), `cost_estimate.py`(월 비용 어림), `check_secrets.py`(키 노출 검사) | 2, 10, 11절 |
+| `ch09/tests/` | pytest 테스트 42개. 모의 모드에서 모두 통과한다 | 0, 7, 11절 |
+| `ch09/docs/프롬프트비교_양식.md` | 판본 비교 기록의 양식 | 11-4 |
+| `ch09/.env.example`, `.gitignore`, `requirements.txt`, `pytest.ini` | 설정 견본(값 없음), 커밋 제외 목록, 고정 판, 테스트 설정 | 0절 |
+| `교수/` | 교수 시연 순서(`시연.md`), 판본 비교 기록의 예시 답안, 실제 호출의 실행 기록을 만드는 `make_run_record.py`. 학생용 키트 저장소에 넣지 않는다 | |
 
-## 쓰는 순서
+## 쓰는 순서 (내 PC. 자세한 설명은 학생용 강의안 0절과 11절)
 
-1. 0절: 키트를 `~/kits/`에 받고, 앞 장 산출물을 확인한다. 없으면 `기준산출물/`을 복사한다(`cp -rn`이라 있는 파일은 덮어쓰지 않는다). 시작 파일, 도구, 워크플로, `.gitignore`의 줄, 화면 명세의 「검사용 약속」, `CLAUDE.md`의 「웹 구현 규칙」을 넣고 한 커밋으로 남긴다.
-2. 6절(따라 하기 1): Playwright를 준비하고(부록 A-18), 구현 전의 정적 검사가 실패하는 것을 본다.
-3. 7절(따라 하기 2): 저장소의 Settings → Pages에서 Source를 GitHub Actions로 바꾸고 `배포기록_양식.md`를 복사해 「배포 설정」을 적는다.
-4. 9절(핵심 실습): 계획과 작업 목록(`작업목록_양식.md`), 인수 조건 표(`인수조건_양식.md`), 작업 단위의 구현과 검사, 전체 검사와 손 점검, Aside 점검(로컬 `http://localhost:8100/`), 첫 배포(`도구/predeploy.py`, `pages.yml`), 에이전트 판정의 대조, 변경 요청(`변경요청_CR-01.md`, REQ-040, `spec-v4`)과 재배포의 순서로 한 흐름이다.
-
-## 받는 명령
-
-가상 환경(`~/llm-service-lab/.venv`)을 켠 터미널에서 실행한다(부록 A-13). 키트 저장소의 클론은 부록 A-12-2에 있다.
+가상 환경을 켠 터미널을 전제로 한다(부록 A-13).
 
 ```bash
-git -C ~/kits-repo pull
-mkdir -p ~/kits && cp -rn ~/kits-repo/Service_09장 ~/kits/
-KIT=~/kits/Service_09장
+git -C ~/kits-repo pull && cp -rn ~/kits-repo/Service_09장 ~/kits/   # 키트 받기(부록 A-12-3)
 cd ~/llm-service-lab
-mkdir -p jobprep/web jobprep/tools jobprep/docs
-cp -rn "$KIT/시작/." jobprep/web/
-cp -n  "$KIT/도구/predeploy.py" jobprep/tools/
-cp -rn "$KIT/배포/.github" .
-cat "$KIT/배포/gitignore_추가.txt" >> .gitignore
-cat "$KIT/화면명세_검사용식별자.md" >> jobprep/docs/설계/화면명세.md
-cat "$KIT/CLAUDE_웹구현규칙.md" >> jobprep/CLAUDE.md
-python -m pip install -r jobprep/web/check/requirements.txt
-python -m playwright install --only-shell chromium
+cp -rn ~/kits/Service_09장/ch09 .
+python -m pip install -r ch09/requirements.txt
+cd ch09
+cp -n .env.example .env                       # LLM_FAKE=1 상태로 시작
+python -m pytest                              # 42 passed
+python -m uvicorn api.app:app --port 8000     # 다른 터미널. 자동 문서 http://127.0.0.1:8000/docs
+python -m eval.run_compare v1 v2 v3           # 판본 비교(모의 응답 재생) → results/비교표.md
+python tools/check_secrets.py                 # KEY_CHECK_OK
 ```
 
-키트는 저장소 밖(`~/kits/`)에 두고 필요한 파일만 저장소로 옮긴다. 가상 환경은 과목 공통의 `~/llm-service-lab/.venv` 하나를 쓴다(부록 A-13). 로컬 웹 서버는 포트 8100(`python -m http.server 8100 --bind 127.0.0.1`, 부록 A-16)으로 띄운다. 브라우저 검사(`check_browser.py`)는 스스로 빈 포트에 서버를 띄우므로 8100과 겹치지 않는다.
+포트는 API 8000이다(부록 A-16). 이 장의 API는 웹 화면을 함께 보내지 않는다. 요청은 `curl`로 보낸다.
+
+## 모의 모드와 실제 호출
+
+- `LLM_FAKE=1`(기본): API를 부르지 않는다. 요약 API는 공고의 칸을 규칙으로 옮긴 모의 요약을 내고, 판본 비교는 `eval/모의응답/`에 미리 적어 둔 응답을 재생한다. 모의 응답은 수업용으로 만든 예시이며 실제 모델의 출력이 아니다.
+- `LLM_FAKE=0`: `.env`에 키(`ANTHROPIC_API_KEY`)를 넣은 뒤에만 쓴다. 키는 선택이다. 학생의 실행 상한은 `tools/first_call.py` 1회이다. 판본 비교의 실제 측정(호출 90회)은 교수가 `교수/make_run_record.py`로 하고, 그 기록을 키트 저장소의 `Service_09장_실행기록/`으로 배포한다.
+
+## 자료를 바꿀 때
+
+서비스 4의 자료를 공개 API로 받은 문서(후보: 고용24 직업정보)로 바꾸면 고칠 곳은 다음과 같다(2026-11-18, 바꾸지 않음).
+
+| 고칠 곳 | 내용 |
+|---|---|
+| `eval/공고/*.txt`, `eval/정답.json` | 새 문서 10건과 정답(마감일 대신 새 필드) |
+| `api/schema.py`의 `FIELDS`, `SUMMARY_SCHEMA`, `Summary` | 요약 필드 |
+| `api/fake.py` | 새 문서의 칸 이름을 옮기는 규칙 |
+| `prompts/v1~v3.md`, `eval/모의응답/v1~v3.json` | 새 문서에 맞춘 판본과 모의 응답 |
+| `eval/grader.py` | `마감일` 항목을 새 필드의 판정으로 |
+| `tests/test_api.py`, `test_grader.py`, `test_prompts.py`, `test_compare.py` | 필드 이름과 기대값 |
 
 ## 확인한 환경
 
-- 2026-11-17(결정 11 개편): Windows 11(빌드 26300), Git Bash, Python 3.13.7. 키트 저장소 흐름(`~/kits-repo` 클론, `cp -rn`)과 0절의 명령, `check_static.py`(구현 전 6/1, 견본 8/8), `check_browser.py`(Playwright 1.64.0, chromium_headless_shell-1248; `교수/web_v1` 20/20, `교수/web` 22/22, `web_v1`에 AC-040 두 개 0/2), `python -m http.server 8100 --bind 127.0.0.1`, `predeploy.py`, `git check-ignore`, CR-01 한 커밋. 교수용 강의안의 「확인한 것」에 출력이 있다.
-- 2026-11-14(집필): 같은 PC에서 위 검사와 로컬 bare 저장소를 쓴 git 흐름.
-- GitHub에서의 실제 워크플로 실행, Pages 설정 화면, Aside의 실행, macOS에서의 실행은 확인하지 못하였다. 교수용 강의안의 「확인한 것과 확인하지 못한 것」을 본다.
+- 2026-11-18: Windows 11 빌드 26300, Git Bash, Python 3.13.7, 위 `requirements.txt`의 판(새 가상 환경). `pytest` 42 passed, `first_call.py`(모의), uvicorn 8000의 `/api/health`, `/api/summary`(200, 캐시, 422, 404, `RATE_LIMIT_PER_MIN=2`의 429, `LLM_FAKE=0`·키 없음의 503), `run_compare`(v1 17/50, v2 42/50, v3 49/50), `cost_estimate.py`(v3 $6.23, v2 $4.89), `check_secrets.py`(OK와 `git add -f .env`의 FAIL), `교수/make_run_record.py`(`LLM_FAKE=1` 리허설).
+- 확인하지 못함: 실제 API 호출(`LLM_FAKE=0`과 키), macOS에서의 실행.

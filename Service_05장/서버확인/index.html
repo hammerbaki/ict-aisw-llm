@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>로컬 서버 확인</title>
+</head>
+<body>
+<h1>로컬 서버 확인</h1>
+<p>이 쪽은 같은 폴더의 <code>data/jobs.json</code>을 읽어 공고의 건수를 보인다. (「LLM 서비스 개발」 5장 4-2, 4-3)</p>
+<p id="result">읽는 중…</p>
+<script>
+  // 상대 경로로 읽는다. 「/data/jobs.json」처럼 /로 시작하면 GitHub Pages의 프로젝트 사이트에서 깨진다.
+  fetch("data/jobs.json")
+    .then(function (r) {
+      if (!r.ok) { throw new Error("HTTP " + r.status); }
+      return r.json();
+    })
+    .then(function (d) {
+      document.getElementById("result").textContent =
+        "공고 " + d.count + "건을 읽었다. 자료: " + d.source + ", 받은 시각: " + d.fetched;
+    })
+    .catch(function (e) {
+      document.getElementById("result").textContent =
+        "공고 자료를 불러오지 못했습니다. 로컬 서버로 열었는지 확인하십시오. (" + e.message + ")";
+    });
+</script>
+</body>
+</html>

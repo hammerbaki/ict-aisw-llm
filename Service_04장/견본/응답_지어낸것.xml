@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 지어낸 견본이다. 항목 이름은 고용24 OPEN-API 채용정보 개발명세서(목록, 2026-11-18 확인)를 따랐고,
+     회사, 공고, 값, 주소는 모두 지어낸 것이다. 실제 응답의 바깥 구조, 날짜의 꼴, 빈 값은 실제 응답으로 확인한다. -->
+<wantedRoot>
+  <total>10</total><startPage>1</startPage><display>10</display>
+  <wanted>
+    <wantedAuthNo>K000000000000001</wantedAuthNo><company>가나다소프트</company><busino>0000000000</busino><indTpNm>응용 소프트웨어 개발 및 공급업</indTpNm>
+    <title>웹 개발자 신입 모집</title><salTpNm>연봉</salTpNm><sal>3000만원 ~ 3400만원</sal><minSal></minSal><maxSal></maxSal>
+    <region>광주 북구</region><holidayTpNm>주5일근무</holidayTpNm><minEdubg>대졸(2~3년)</minEdubg><maxEdubg></maxEdubg><career>신입</career>
+    <regDt>27-04-01</regDt><closeDt>27-04-20</closeDt><infoSvc>(지어낸 값)</infoSvc>
+    <wantedInfoUrl>https://www.work24.go.kr/example/1</wantedInfoUrl><wantedMobileInfoUrl>https://m.work24.go.kr/example/1</wantedMobileInfoUrl>
+    <zipCd>00000</zipCd><strtnmCd>0000000000000</strtnmCd><basicAddr>광주 북구 (지어낸 주소)</basicAddr><detailAddr>(지어낸 상세주소)</detailAddr>
+    <empTpCd>10</empTpCd><jobsCd>000000</jobsCd><smodifyDtm>202704010900</smodifyDtm>
+  </wanted>
+  <wanted>
+    <wantedAuthNo>K000000000000002</wantedAuthNo><company>라마바시스템</company><busino>0000000000</busino><indTpNm>데이터베이스 및 온라인정보 제공업</indTpNm>
+    <title>데이터 관리 사무원</title><salTpNm>월급</salTpNm><sal>230만원</sal><minSal></minSal><maxSal></maxSal>
+    <region>광주 광산구</region><holidayTpNm>주5일근무</holidayTpNm><minEdubg>학력무관</minEdubg><maxEdubg></maxEdubg><career>관계없음</career>
+    <regDt>27-04-02</regDt><closeDt>채용시까지</closeDt><infoSvc>(지어낸 값)</infoSvc>
+    <wantedInfoUrl>https://www.work24.go.kr/example/2</wantedInfoUrl><wantedMobileInfoUrl>https://m.work24.go.kr/example/2</wantedMobileInfoUrl>
+    <zipCd>00000</zipCd><strtnmCd>0000000000000</strtnmCd><basicAddr>광주 광산구 (지어낸 주소)</basicAddr><detailAddr>(지어낸 상세주소)</detailAddr>
+    <empTpCd>10</empTpCd><jobsCd>000000</jobsCd><smodifyDtm>202704020900</smodifyDtm>
+  </wanted>
+  <wanted>
+    <wantedAuthNo>K000000000000003</wantedAuthNo><company>사아자전자</company><busino>0000000000</busino><indTpNm>전자부품 제조업</indTpNm>
+    <title>생산 설비 운영</title><salTpNm>시급</salTpNm><sal>11000원</sal><minSal></minSal><maxSal></maxSal>
+    <region>전남 나주시</region><holidayTpNm>주5일근무</holidayTpNm><minEdubg>고졸</minEdubg><maxEdubg></maxEdubg><career>경력</career>
+    <regDt>27-04-03</regDt><closeDt>27-04-15</closeDt><infoSvc>(지어낸 값)</infoSvc>
+    <wantedInfoUrl>https://www.work24.go.kr/example/3</wantedInfoUrl><wantedMobileInfoUrl>https://m.work24.go.kr/example/3</wantedMobileInfoUrl>
+    <zipCd>00000</zipCd><strtnmCd>0000000000000</strtnmCd><basicAddr>전남 나주시 (지어낸 주소)</basicAddr><detailAddr>(지어낸 상세주소)</detailAddr>
+    <empTpCd>10</empTpCd><jobsCd>000000</jobsCd><smodifyDtm>202704030900</smodifyDtm>
+  </wanted>
+  <wanted>
+    <wantedAuthNo>K000000000000004</wantedAuthNo><company>차카타물류</company><busino>0000000000</busino><indTpNm>일반 창고업</indTpNm>
+    <title>물류 관리 보조</title><salTpNm>월급</salTpNm><sal></sal><minSal></minSal><maxSal></maxSal>
+    <region>전남 순천시</region><holidayTpNm>주5일근무</holidayTpNm><minEdubg>고졸</minEdubg><maxEdubg></maxEdubg><career>신입</career>
+    <regDt>27-04-04</regDt><closeDt>27-04-30</closeDt><infoSvc>(지어낸 값)</infoSvc>
+    <wantedInfoUrl>https://www.work24.go.kr/example/4</wantedInfoUrl><wantedMobileInfoUrl>https://m.work24.go.kr/example/4</wantedMobileInfoUrl>
+    <zipCd>00000</zipCd><strtnmCd>0000000000000</strtnmCd><basicAddr>전남 순천시 (지어낸 주소)</basicAddr><detailAddr>(지어낸 상세주소)</detailAddr>
+    <empTpCd>10</empTpCd><jobsCd>000000</jobsCd><smodifyDtm>202704040900</smodifyDtm>
+  </wanted>
+  <wanted>
+    <wantedAuthNo>K000000000000005</wantedAuthNo><company>파하데이터</company><busino>0000000000</busino><indTpNm>데이터베이스 및 온라인정보 제공업</indTpNm>
+    <title>데이터 라벨링 신입</title><salTpNm>월급</salTpNm><sal>220만원</sal><minSal></minSal><maxSal></maxSal>
+    <region>광주 서구</region><holidayTpNm>주5일근무</holidayTpNm><minEdubg>학력무관</minEdubg><maxEdubg></maxEdubg><career>신입</career>
+    <regDt>27-04-05</regDt><closeDt>27-04-17</closeDt><infoSvc>(지어낸 값)</infoSvc>
+    <wantedInfoUrl>https://www.work24.go.kr/example/5</wantedInfoUrl><wantedMobileInfoUrl>https://m.work24.go.kr/example/5</wantedMobileInfoUrl>
+    <zipCd>00000</zipCd><strtnmCd>0000000000000</strtnmCd><basicAddr>광주 서구 (지어낸 주소)</basicAddr><detailAddr>(지어낸 상세주소)</detailAddr>
+    <empTpCd>10</empTpCd><jobsCd>000000</jobsCd><smodifyDtm>202704050900</smodifyDtm>
+  </wanted>
+  <wanted>
+    <wantedAuthNo>K000000000000006</wantedAuthNo><company>가람웹</company><busino>0000000000</busino><indTpNm>응용 소프트웨어 개발 및 공급업</indTpNm>
+    <title>프론트엔드 개발 보조</title><salTpNm>연봉</salTpNm><sal>2800만원</sal><minSal></minSal><maxSal></maxSal>
+    <region>서울 강남구</region><holidayTpNm>주5일근무</holidayTpNm><minEdubg>대졸(2~3년)</minEdubg><maxEdubg></maxEdubg><career>신입</career>
+    <regDt>27-04-06</regDt><closeDt>27-05-10</closeDt><infoSvc>(지어낸 값)</infoSvc>
+    <wantedInfoUrl>https://www.work24.go.kr/example/6</wantedInfoUrl><wantedMobileInfoUrl>https://m.work24.go.kr/example/6</wantedMobileInfoUrl>
+    <zipCd>00000</zipCd><strtnmCd>0000000000000</strtnmCd><basicAddr>서울 강남구 (지어낸 주소)</basicAddr><detailAddr>(지어낸 상세주소)</detailAddr>
+    <empTpCd>10</empTpCd><jobsCd>000000</jobsCd><smodifyDtm>202704060900</smodifyDtm>
+  </wanted>
+  <wanted>
+    <wantedAuthNo>K000000000000007</wantedAuthNo><company>나래정보통신</company><busino>0000000000</busino><indTpNm>유선 통신업</indTpNm>
+    <title>네트워크 유지보수</title><salTpNm>연봉</salTpNm><sal>3200만원</sal><minSal></minSal><maxSal></maxSal>
+    <region>광주 남구</region><holidayTpNm>주5일근무</holidayTpNm><minEdubg>대졸(2~3년)</minEdubg><maxEdubg></maxEdubg><career>경력</career>
+    <regDt>27-04-07</regDt><closeDt>채용시까지</closeDt><infoSvc>(지어낸 값)</infoSvc>
+    <wantedInfoUrl>https://www.work24.go.kr/example/7</wantedInfoUrl><wantedMobileInfoUrl>https://m.work24.go.kr/example/7</wantedMobileInfoUrl>
+    <zipCd>00000</zipCd><strtnmCd>0000000000000</strtnmCd><basicAddr>광주 남구 (지어낸 주소)</basicAddr><detailAddr>(지어낸 상세주소)</detailAddr>
+    <empTpCd>10</empTpCd><jobsCd>000000</jobsCd><smodifyDtm>202704070900</smodifyDtm>
+  </wanted>
+  <wanted>
+    <wantedAuthNo>K000000000000008</wantedAuthNo><company>다솜식품</company><busino>0000000000</busino><indTpNm>기타 식품 제조업</indTpNm>
+    <title>품질 관리 사원</title><salTpNm>월급</salTpNm><sal>250만원</sal><minSal></minSal><maxSal></maxSal>
+    <region>전북 전주시</region><holidayTpNm>주5일근무</holidayTpNm><minEdubg>고졸</minEdubg><maxEdubg></maxEdubg><career>관계없음</career>
+    <regDt>27-04-08</regDt><closeDt>27-04-25</closeDt><infoSvc>(지어낸 값)</infoSvc>
+    <wantedInfoUrl>https://www.work24.go.kr/example/8</wantedInfoUrl><wantedMobileInfoUrl>https://m.work24.go.kr/example/8</wantedMobileInfoUrl>
+    <zipCd>00000</zipCd><strtnmCd>0000000000000</strtnmCd><basicAddr>전북 전주시 (지어낸 주소)</basicAddr><detailAddr>(지어낸 상세주소)</detailAddr>
+    <empTpCd>10</empTpCd><jobsCd>000000</jobsCd><smodifyDtm>202704080900</smodifyDtm>
+  </wanted>
+  <wanted>
+    <wantedAuthNo>K000000000000009</wantedAuthNo><company>바른회계</company><busino>0000000000</busino><indTpNm>회계 및 세무 관련 서비스업</indTpNm>
+    <title>회계 사무 보조</title><salTpNm>월급</salTpNm><sal>230만원</sal><minSal></minSal><maxSal></maxSal>
+    <region>경기 수원시</region><holidayTpNm>주5일근무</holidayTpNm><minEdubg>대졸(2~3년)</minEdubg><maxEdubg></maxEdubg><career>신입</career>
+    <regDt>27-04-09</regDt><closeDt>27-04-18</closeDt><infoSvc>(지어낸 값)</infoSvc>
+    <wantedInfoUrl>https://www.work24.go.kr/example/9</wantedInfoUrl><wantedMobileInfoUrl>https://m.work24.go.kr/example/9</wantedMobileInfoUrl>
+    <zipCd>00000</zipCd><strtnmCd>0000000000000</strtnmCd><basicAddr>경기 수원시 (지어낸 주소)</basicAddr><detailAddr>(지어낸 상세주소)</detailAddr>
+    <empTpCd>10</empTpCd><jobsCd>000000</jobsCd><smodifyDtm>202704090900</smodifyDtm>
+  </wanted>
+  <wanted>
+    <wantedAuthNo>K000000000000010</wantedAuthNo><company>새솔디자인</company><busino>0000000000</busino><indTpNm>시각 디자인업</indTpNm>
+    <title>웹 디자이너</title><salTpNm>연봉</salTpNm><sal>2700만원</sal><minSal></minSal><maxSal></maxSal>
+    <region>경남 창원시</region><holidayTpNm>주5일근무</holidayTpNm><minEdubg>대졸(2~3년)</minEdubg><maxEdubg></maxEdubg><career>신입</career>
+    <regDt>27-04-10</regDt><closeDt>27-04-16</closeDt><infoSvc>(지어낸 값)</infoSvc>
+    <wantedInfoUrl>https://www.work24.go.kr/example/10</wantedInfoUrl><wantedMobileInfoUrl>https://m.work24.go.kr/example/10</wantedMobileInfoUrl>
+    <zipCd>00000</zipCd><strtnmCd>0000000000000</strtnmCd><basicAddr>경남 창원시 (지어낸 주소)</basicAddr><detailAddr>(지어낸 상세주소)</detailAddr>
+    <empTpCd>10</empTpCd><jobsCd>000000</jobsCd><smodifyDtm>202704100900</smodifyDtm>
+  </wanted>
+</wantedRoot>

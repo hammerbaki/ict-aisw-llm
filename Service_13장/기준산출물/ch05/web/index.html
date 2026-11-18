@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>공고 모아보기 (13장 기준산출물)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>공고 모아보기</h1>
+    <p class="note">13장 기준산출물: 5장 서비스 1의 견본이다. 공고는 모두 지어낸 것이다.</p>
+  </header>
+
+  <main>
+    <div class="toolbar">
+      <input id="q" type="text" placeholder="검색어">
+      <select id="region">
+        <option value="">지역 전체</option>
+        <option>광주</option>
+        <option>전남</option>
+        <option>서울</option>
+      </select>
+      <select id="career">
+        <option value="">경력 전체</option>
+        <option>신입</option>
+        <option>경력</option>
+        <option>관계없음</option>
+      </select>
+      <button id="search">검색</button>
+      <select id="sort">
+        <option value="reg">등록일순</option>
+        <option value="close">마감일순</option>
+      </select>
+    </div>
+    <p id="count"></p>
+    <ul id="job-list"></ul>
+    <p id="message" hidden></p>
+  </main>
+
+  <footer id="source"></footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

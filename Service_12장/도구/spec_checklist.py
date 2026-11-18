@@ -3,7 +3,7 @@
 점검표는 요구 ID가 첫 칸에 있고 머리글에 「판정」 칸이 있는 표다. 판정은 충족, 부분, 미충족, 해당없음 중 하나다.
 충족률 = (충족 + 0.5 × 부분) / (전체 − 해당없음)
 
-    python 도구/spec_checklist.py jobprep/docs/비교/점검표_form.md jobprep/docs/비교/점검표_chat.md
+    python ~/kits/Service_12장/도구/spec_checklist.py ch12/점검표_a.md ch12/점검표_b.md
 """
 from __future__ import annotations
 

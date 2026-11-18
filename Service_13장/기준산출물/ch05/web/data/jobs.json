@@ -1,0 +1,17 @@
+{
+  "source": "고용24 OPEN-API 채용정보 (13장 기준산출물: 지어낸 견본 자료)",
+  "fetched": "2027-05-17 09:00",
+  "count": 10,
+  "jobs": [
+    {"wantedAuthNo": "K000000000000101", "company": "가나다소프트", "title": "웹 개발자 신입 모집", "salTpNm": "연봉", "sal": "3000만원 ~ 3400만원", "region": "광주 북구", "career": "신입", "minEdubg": "대졸(2~3년)", "regDt": "27-05-03", "closeDt": "27-05-19", "wantedInfoUrl": "https://www.work24.go.kr/example/101"},
+    {"wantedAuthNo": "K000000000000102", "company": "라마바시스템", "title": "데이터 관리 사무원", "salTpNm": "월급", "sal": "230만원", "region": "광주 광산구", "career": "관계없음", "minEdubg": "학력무관", "regDt": "27-05-04", "closeDt": "채용시까지", "wantedInfoUrl": "https://www.work24.go.kr/example/102"},
+    {"wantedAuthNo": "K000000000000103", "company": "사아자전자", "title": "생산 설비 운영", "salTpNm": "시급", "sal": "11000원", "region": "전남 나주시", "career": "경력", "minEdubg": "고졸", "regDt": "27-05-06", "closeDt": "27-05-21", "wantedInfoUrl": "https://www.work24.go.kr/example/103"},
+    {"wantedAuthNo": "K000000000000104", "company": "차카타물류", "title": "물류 관리 사무원", "salTpNm": "월급", "sal": "240만원", "region": "광주 서구", "career": "신입", "minEdubg": "고졸", "regDt": "27-04-28", "closeDt": "27-05-15", "wantedInfoUrl": "https://www.work24.go.kr/example/104"},
+    {"wantedAuthNo": "K000000000000105", "company": "파하정보", "title": "앱 개발 보조", "salTpNm": "연봉", "sal": "2900만원", "region": "전남 순천시", "career": "신입", "minEdubg": "대졸(2~3년)", "regDt": "27-05-08", "closeDt": "27-05-31", "wantedInfoUrl": "https://www.work24.go.kr/example/105"},
+    {"wantedAuthNo": "K000000000000106", "company": "한빛데이터", "title": "데이터 라벨링 사무원", "salTpNm": "시급", "sal": "10500원", "region": "광주 남구", "career": "관계없음", "minEdubg": "학력무관", "regDt": "27-05-10", "closeDt": "27-05-17", "wantedInfoUrl": "https://www.work24.go.kr/example/106"},
+    {"wantedAuthNo": "K000000000000107", "company": "누리테크", "title": "전산 장비 유지보수", "salTpNm": "월급", "sal": "260만원", "region": "전남 목포시", "career": "경력", "minEdubg": "고졸", "regDt": "27-05-11", "closeDt": "27-06-10", "wantedInfoUrl": "https://www.work24.go.kr/example/107"},
+    {"wantedAuthNo": "K000000000000108", "company": "다온식품", "title": "품질 관리 사원", "salTpNm": "월급", "sal": "250만원", "region": "전남 광양시", "career": "신입", "minEdubg": "고졸", "regDt": "27-04-25", "closeDt": "27-05-10", "wantedInfoUrl": "https://www.work24.go.kr/example/108"},
+    {"wantedAuthNo": "K000000000000109", "company": "보람의료기", "title": "고객 상담원", "salTpNm": "월급", "sal": "235만원", "region": "전남 여수시", "career": "관계없음", "minEdubg": "학력무관", "regDt": "27-05-12", "closeDt": "27-05-28", "wantedInfoUrl": "https://www.work24.go.kr/example/109"},
+    {"wantedAuthNo": "K000000000000110", "company": "새솔네트웍스", "title": "시스템 엔지니어", "salTpNm": "연봉", "sal": "4000만원", "region": "서울 강남구", "career": "경력", "minEdubg": "대졸(4년)", "regDt": "27-05-13", "closeDt": "27-06-05", "wantedInfoUrl": "https://www.work24.go.kr/example/110"}
+  ]
+}

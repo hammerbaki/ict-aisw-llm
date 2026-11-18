@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>스터디룸 예약</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>스터디룸 예약</h1>
+    <p class="note">8장 예제 웹앱. 이름 칸에는 지어낸 값만 쓴다.</p>
+  </header>
+
+  <main>
+    <section aria-labelledby="pick">
+      <h2 id="pick">날짜</h2>
+      <label>날짜 <input type="date" id="date"></label>
+    </section>
+
+    <section aria-labelledby="new">
+      <h2 id="new">새 예약</h2>
+      <form id="form">
+        <label>방 <select id="room"></select></label>
+        <label>시작 <select id="start"></select></label>
+        <label>끝 <select id="end"></select></label>
+        <label>이름 <input id="name" maxlength="20" required placeholder="예: 연습"></label>
+        <button type="submit">예약</button>
+      </form>
+      <p id="message" role="status"></p>
+    </section>
+
+    <section aria-labelledby="list">
+      <h2 id="list">그날의 예약</h2>
+      <table>
+        <thead><tr><th>방</th><th>시간</th><th>이름</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <p id="empty" hidden>이 날짜에는 아직 예약이 없다. 위에서 예약한다.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

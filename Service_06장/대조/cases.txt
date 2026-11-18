@@ -1,0 +1,6 @@
+a.json
+--sort-keys a.json
+--compact a.json
+--indent 2 a.json
+bad.json
+none.json

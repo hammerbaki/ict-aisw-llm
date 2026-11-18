@@ -1,9 +1,0 @@
-{
-  "name": "ask",
-  "description": "11장 질의응답에 질문 두 개를 보내는 과업(연습용)",
-  "inputs": {},
-  "steps": [
-    {"path": "/api/ask", "body": {"question": "자기소개서 글자 수 제한은 어떻게 세나요?"}},
-    {"path": "/api/ask", "body": {"question": "공고의 자격 요건과 우대 사항은 무엇이 다른가요?"}}
-  ]
-}

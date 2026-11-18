@@ -1,8 +1,0 @@
-{
-  "variant": "chat",
-  "path": "/api/feedback/chat",
-  "body": {"question": "{question}", "limit": "{limit}", "job_id": null,
-           "messages": [{"role": "user", "content": "{answer}"}]},
-  "parts": {"mode": "text", "field": "reply", "markers": ["강점", "보완", "예시"]},
-  "over_limit": {"mode": "text", "field": "reply", "contains": "초과"}
-}
