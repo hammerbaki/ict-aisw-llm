@@ -47,8 +47,8 @@ PINNED = {
         "      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0\n"
         "        with:\n          python-version-file: .python-version\n"
     ),
-    "requirements.txt": "fastapi==0.162.7\n",
-    "requirements.lock": f"fastapi==0.162.7 \\\n{HASH}\n    # via -r requirements.txt\n",
+    "requirements.txt": "fastapi==0.163.2\n",
+    "requirements.lock": f"fastapi==0.163.2 \\\n{HASH}\n    # via -r requirements.txt\n",
     ".python-version": "3.12\n",
     ".env.example": "LLM_MODEL=claude-haiku-5-5\nPROMPT_SUMMARY=summary_v1\nPROMPT_ASK=ask_v1\n",
 }
@@ -65,7 +65,7 @@ def test_check_pins_passes_when_everything_is_pinned(tmp_path):
 @pytest.mark.parametrize("change, code", [
     ({".github/workflows/ci.yml": "steps:\n  - uses: actions/checkout@v7\n"}, "P1"),
     ({".github/workflows/ci.yml": f"steps:\n  - uses: actions/checkout@{SHA}\n"}, "P1"),
-    ({"requirements.lock": "fastapi==0.162.7\n"}, "P2"),
+    ({"requirements.lock": "fastapi==0.163.2\n"}, "P2"),
     ({"requirements.txt": "fastapi==0.163.0\n"}, "P2"),
     ({".python-version": ""}, "P3"),
     ({".env.example": "LLM_MODEL=claude-haiku-latest\nPROMPT_SUMMARY=a\nPROMPT_ASK=b\n"}, "P4"),

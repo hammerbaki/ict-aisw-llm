@@ -37,9 +37,9 @@ ID_ANY = re.compile(r"OR-(?:SEC|REL|CON|REP)-\d{2}")
 PATTERNS = {
     "상시": None,
     "상태": re.compile(r"동안"),
-    "이벤트": re.compile(r"면,"),
+    "사건": re.compile(r"면,"),
     "선택": re.compile(r"경우"),
-    "원치 않는 상황": re.compile(r"^만약 .+면,"),
+    "원치 않는 동작": re.compile(r"^만약 .+면,"),
 }
 ENDING = re.compile(r"야 한다\.?$")
 VAGUE = ("적절히", "적절한", "빠르게", "충분히", "가능한 한", "잘 ", "등을", "원활", "최대한", "신속")
@@ -142,10 +142,10 @@ def check_reqs(text: str, min_total: int = 15, min_each: int = 3) -> tuple[list[
                 errors.append(f"{where}: 요구 문장이 비어 있다")
             else:
                 if form not in PATTERNS:
-                    errors.append(f"{where}: 문형 칸의 값 「{form}」이 상시, 상태, 이벤트, 선택, 원치 않는 상황 가운데 하나가 아니다")
+                    errors.append(f"{where}: 문형 칸의 값 「{form}」이 상시, 사건, 상태, 선택, 원치 않는 동작 가운데 하나가 아니다")
                 elif PATTERNS[form] and not PATTERNS[form].search(req):
-                    mark = {"상태": "「~인 동안,」", "이벤트": "「~하면,」", "선택": "「~인 경우,」",
-                            "원치 않는 상황": "「만약 ~이면,」"}[form]
+                    mark = {"상태": "「~인 동안,」", "사건": "「~하면,」", "선택": "「~인 경우,」",
+                            "원치 않는 동작": "「만약 ~하면,」"}[form]
                     errors.append(f"{where}: {form} 문형인데 요구 문장에 {mark} 표지가 없다")
                 if not ENDING.search(req.rstrip("*")):
                     errors.append(f"{where}: 요구 문장이 「~(해)야 한다.」 또는 「~않아야 한다.」로 끝나지 않는다")
