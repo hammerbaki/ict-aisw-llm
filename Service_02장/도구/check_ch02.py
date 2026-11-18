@@ -6,7 +6,7 @@ Claude Code의 대화 내용은 보지 않는다. 판정은 커밋, 파일, 프�
 사용법 (가상 환경을 켠 터미널에서):
     python ~/kits/Service_02장/도구/check_ch02.py ~/llm-service-lab
 
-선택 과제(12-10, 정렬 옵션)는 [선택 · …]으로 따로 보이고 통과 수에 넣지 않는다.
+선택 과제(과제지시문 9, 정렬 옵션)는 [선택 · …]으로 따로 보이고 통과 수에 넣지 않는다.
 """
 import os
 import subprocess
@@ -90,7 +90,7 @@ def main():
               and not p.endswith(".env.example")]
     check(".env 같은 비밀 정보 파일이 커밋되지 않았다", not secret,
           f"커밋된 파일: {secret}. 되돌리기 상황표의 「비밀 정보를 커밋했다」를 본다")
-    check("CLAUDE.md가 커밋되어 있다", "CLAUDE.md" in tracked, "/init으로 만들고 고친 뒤 커밋한다(12-2)")
+    check("CLAUDE.md가 커밋되어 있다", "CLAUDE.md" in tracked, "/init으로 만들고 고친 뒤 커밋한다(10-2)")
     check("ch01/이 커밋되어 있다", any(p.startswith("ch01/") for p in tracked),
           "3-4의 첫 커밋을 확인한다")
     for f in ["ch02/deadline/deadline.py", "ch02/deadline/dday.py", "ch02/deadline/README.md"]:
@@ -113,7 +113,7 @@ def main():
 
     _, remotes = git(repo, "remote")
     check("원격 origin이 등록되어 있다", "origin" in remotes.split(),
-          "git remote add origin <주소> (11-4)")
+          "git remote add origin <주소> (9-2)")
     code, upstream = git(repo, "rev-parse", "--abbrev-ref", "main@{upstream}")
     check("main이 원격 브랜치를 추적한다", code == 0,
           "git push -u origin main")
@@ -135,7 +135,7 @@ def main():
               "No module named pytest이면 가상 환경을 켠 터미널에서 점검기를 실행한다(부록 A-13-1)")
         code, sorted_lines = run_program(folder, "--sort", "deadline")
         if code == 2:
-            print("[선택 · 하지 않음] --sort deadline 옵션 (12-10)")
+            print("[선택 · 하지 않음] --sort deadline 옵션 (과제지시문 9)")
         else:
             optional("--sort deadline이면 마감일 순이다 (첫 줄이 가람소프트)",
                      bool(sorted_lines) and "가람소프트" in sorted_lines[0],

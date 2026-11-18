@@ -19,6 +19,7 @@ python -m pip install -r ~/kits/Service_08장/requirements.txt
 | `견본서버/app.py`, `test_app.py` | 강의안 2-3의 명세로 만든 FastAPI 서버와 테스트 다섯 개 | 4절, 5-1, 7-6 |
 | `요청본문/*.json` | `curl --data-binary @파일`로 보낼 본문 다섯 개(정상, 겹침, 틀린 형식, 앞뒤가 바뀐 시각, 맞닿은 시각) | 4절, 7-7 |
 | `공개API/jobs_api.py`, `test_jobs_api.py`, `응답_지어낸것.xml` | 고용24 채용정보를 서버가 부르는 끝점, 가짜 응답을 쓰는 테스트 다섯 개, 4·5장과 같은 지어낸 견본 응답(공고 10건) | 3-4, 7-9 |
+| `양식/끝점목록_양식.md`, `양식/API명세_양식.md` | 끝점 목록과 API 명세의 빈 꼴(부록 C-8). `ch08/끝점목록.md`, `ch08/API명세.md`로 복사해 쓴다 | 1-8, 2-1, 7-3, 7-4 |
 | `requirements.txt` | FastAPI, Uvicorn, httpx, pytest의 판 | 0절 |
 
 ## 포트
