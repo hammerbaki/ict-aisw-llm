@@ -47,7 +47,7 @@ def embed_model():
 
 
 def ollama_url():
-    return env("OLLAMA_URL", "http://localhost:11434")
+    return env("OLLAMA_URL", "http://127.0.0.1:11434")
 
 
 def chunk_mode():

@@ -40,7 +40,7 @@ python -m rag index              # 청크 36개(대체 임베딩)
 |---|---|---|
 | `EMBED_BACKEND` | `fallback` | `fallback`은 글자 n-gram 대체 구현이다. 누가 실행해도 같은 벡터가 나온다. `ollama`는 내 PC의 Ollama(선택, 부록 A-17)를 쓰고 연결할 수 없으면 오류를 낸다. `auto`는 Ollama를 먼저 시도한다(측정에는 쓰지 않는다) |
 | `EMBED_MODEL` | `nomic-embed-text` | Ollama 임베딩 모델 이름 |
-| `OLLAMA_URL` | `http://localhost:11434` | Ollama 주소 |
+| `OLLAMA_URL` | `http://127.0.0.1:11434` | Ollama 주소 |
 | `CHUNK_MODE` | `heading` | `heading`(제목 단위) 또는 `size`(고정 길이) |
 | `CHUNK_MAX_CHARS` | `500` | 청크 길이의 상한(글자) |
 | `CHUNK_OVERLAP` | `0` | 겹치는 글자 수 |

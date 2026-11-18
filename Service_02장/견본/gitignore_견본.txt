@@ -8,7 +8,7 @@ __pycache__/
 *.pyc
 .pytest_cache/
 
-# 비밀 정보: API 키, 토큰, 비밀번호를 담는 파일 (10장에서 .env를 쓴다)
+# 비밀 정보: API 키, 토큰, 비밀번호를 담는 파일 (9장에서 .env를 쓴다)
 .env
 .env.*
 !.env.example
