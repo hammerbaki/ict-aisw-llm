@@ -10,7 +10,7 @@
 | `.claude/settings.json` | 3장(권한), 6장(훅 등록) | 4장 키트의 권한 견본 + 6장 키트의 `훅설정.json` |
 | `plugins/jobprep-ops/`, `.claude-plugin/marketplace.json` | 4장(스킬과 플러그인) | 4장 키트의 `예비/`와 `재료/incident-report/`를 4장 본문의 배치대로 놓았다 |
 | `.mcp.json`, `mcp/ops_server.py` | 5장(MCP) | 5장 키트의 `설정/mcp.json`과 `교수/ops_server_완성.py`(서버 `jobprep-ops`, 도구 `error_summary`, `status_counts`, `slow_requests`, `read_log`). `mcp==2.3.0`이 필요하다 |
-| `.claude/hooks/` | 6장(훅) | 6장 키트의 `hooks/`(편집 뒤 테스트 훅과 점검 스크립트에 동결 검사 포함). `protected.txt`에 6장 4-5절의 `data/jobs.json` 두 줄을 더하였다 |
+| `.claude/hooks/` | 6장(훅) | 6장 키트의 `hooks/`(편집 뒤 테스트 훅과 점검 스크립트에 동결 검사 포함). `protected.txt`에 6장 4-3절의 `data/jobs.json` 두 줄을 더하였다 |
 | `.claude/agents/reviewer.md` | 6장(검토 서브에이전트) | 6장 키트의 완성본 `교수/reviewer.md`(검토 규칙 RV1~RV6) |
 
-6장의 부품(훅, 검토자)과 5장의 MCP 서버, 동결 기록은 정합 작업(2026-11-14)에서 6장 키트의 최신 파일로 다시 복사하였다. 복사 명령은 7장 강의안 0-3절에 있다. 복사한 뒤 `tools/test_guard.py check`가 `TEST_CHANGED`이면 6장 0-3절처럼 사람이 확인하고 `freeze --update`로 다시 동결한다.
+6장의 부품(훅, 검토자)과 5장의 MCP 서버, 동결 기록은 정합 작업(2026-11-14)에서 6장 키트의 최신 파일로 다시 복사하였다. 복사 명령은 7장 강의안 0-3절에 있다. 복사한 뒤 `tools/test_guard.py check`가 `TEST_CHANGED`이면 6장 0-2절처럼 사람이 확인하고 `freeze --update`로 다시 동결한다.

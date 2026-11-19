@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# main 브랜치(와 에이전트·루프 브랜치)의 보호 규칙을 gh api로 설정하고 확인한다 (13장 7절).
+# main 브랜치(와 에이전트·루프 브랜치)의 보호 규칙을 gh api로 설정하고 확인한다 (13장 6-3).
 #
 # 이 스크립트는 교재 집필 때 실제 GitHub 저장소에 실행해 보지 못하였다(2026-11-14).
 # 요청 본문의 형식은 GitHub REST API 문서(Repository rules, Branch protection)와 대조하였다.

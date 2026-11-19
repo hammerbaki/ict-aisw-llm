@@ -13,7 +13,7 @@
 --backend sim(기본)은 evals/sim.py의 변동 모의 모델을 쓴다. API를 부르지 않는다.
 --backend real은 실제 모델을 부른다. ANTHROPIC_API_KEY와 LLM_MODEL이 있어야 하며 비용이 든다.
   두 값은 셸 환경 변수나 저장소 맨 위의 .env에서 읽는다(이미 셸에 있는 값이 앞선다).
-  학생 각자의 키로 하는 실제 평가는 한 번만 한다: --backend real --runs 3 (12장 11-9, 편성표 §3).
+  학생 각자의 키로 하는 실제 평가는 한 번만 한다: --backend real --runs 1 (12장 11-9, 편성표 §3).
 """
 
 import argparse

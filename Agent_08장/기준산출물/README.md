@@ -13,7 +13,7 @@
 | `tests/.baseline.json`, `tools/test_guard.py` | 2장(테스트 동결) | 7장 키트의 `기준산출물/`(새 형식, 파일 11개) |
 | `docs/운영/하네스설계서.md` | 7장(하네스 설계서) | 7장 키트의 교수용 견본 |
 
-동결 기록은 2장을 마친 저장소(테스트 세 파일 `test_closing_within.py`, `test_summary_limits.py`, `test_ask_limits.py`와 마커를 등록한 `pytest.ini`)를 기준으로 하였다. 2장을 하지 않은 저장소에 복사하면 `python tools/test_guard.py check`가 그 파일들을 「삭제」와 「수정」으로 알리고, 편집 뒤 테스트 훅(`run_tests.sh`)이 매번 동결 검사 실패를 보고한다(`bash .claude/hooks/check_hooks.sh`의 결과가 「통과 17, 실패 1」이 된다). 그때는 6장 0-3처럼 사람이 확인한 뒤 `python tools/test_guard.py freeze --update`로 다시 동결한다.
+동결 기록은 2장을 마친 저장소(테스트 세 파일 `test_closing_within.py`, `test_summary_limits.py`, `test_ask_limits.py`와 마커를 등록한 `pytest.ini`)를 기준으로 하였다. 2장을 하지 않은 저장소에 복사하면 `python tools/test_guard.py check`가 그 파일들을 「삭제」와 「수정」으로 알리고, 편집 뒤 테스트 훅(`run_tests.sh`)이 매번 동결 검사 실패를 보고한다(`bash .claude/hooks/check_hooks.sh`의 결과가 「통과 17, 실패 1」이 된다). 그때는 6장 0-2처럼 사람이 확인한 뒤 `python tools/test_guard.py freeze --update`로 다시 동결한다.
 
 이 폴더에는 `.claude/`와 `CLAUDE.md`가 들어 있다. 키트 폴더 안에서 `claude`를 띄우면 이 파일들이 읽힐 수 있으므로, Claude Code는 언제나 저장소 폴더에서 띄운다.
 

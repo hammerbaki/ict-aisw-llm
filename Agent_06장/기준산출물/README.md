@@ -8,7 +8,7 @@
 | `tools/test_guard.py` | 2장(동결 검사기) | run_tests.sh가 편집 뒤에 `check`를 돌린다. 2장 키트 `도구/test_guard.py`의 사본이다 |
 | `CLAUDE.md` | 3장(팀 규칙) | 1절의 지시와 강제 비교, 검토자의 검토 규칙 RV1~RV6의 근거 |
 | `.claude/settings.json` | 3장(권한 규칙) | 훅 설정을 더할 바탕. `Read(./.env)` 거부 규칙이 들어 있다 |
-| `.mcp.json`, `mcp/ops_server.py` | 5장(MCP) | 6장의 실습에는 쓰지 않는다. 저장소 상태를 5장 뒤와 맞추기 위한 것으로, 5장 키트의 `설정/mcp.json`과 `교수/ops_server_완성.py`(서버 `jobprep-ops`, 도구 `error_summary`, `status_counts`, `slow_requests`, `read_log`)의 사본이다. `.mcp.json`은 서버를 `python`으로 띄우므로 Claude Code를 가상 환경을 켠 터미널에서 시작해야 한다(Windows에서 `.venv/bin/python` 경로는 없다). 쓰려면 5장 0-3절대로 `requirements.txt`에 `mcp==2.3.0`을 더해 설치한다. 설치하지 않은 채 Claude Code를 열면 `jobprep-ops` 연결 실패가 보일 수 있으나 6장 실습에는 지장이 없다 |
+| `.mcp.json`, `mcp/ops_server.py` | 5장(MCP) | 6장의 실습에는 쓰지 않는다. 저장소 상태를 5장 뒤와 맞추기 위한 것으로, 5장 키트의 `설정/mcp.json`과 `교수/ops_server_완성.py`(서버 `jobprep-ops`, 도구 `error_summary`, `status_counts`, `slow_requests`, `read_log`)의 사본이다. `.mcp.json`은 서버를 `python`으로 띄우므로 Claude Code를 가상 환경을 켠 터미널에서 시작해야 한다(Windows에서 `.venv/bin/python` 경로는 없다). 쓰려면 5장 0-2절대로 `requirements.txt`에 `mcp==2.3.0`을 더해 설치한다. 설치하지 않은 채 Claude Code를 열면 `jobprep-ops` 연결 실패가 보일 수 있으나 6장 실습에는 지장이 없다 |
 
 ## 복사
 
